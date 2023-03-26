@@ -91,7 +91,7 @@
 <script src="/js/aos.js"></script>
 <script>
     AOS.init({
-        duration: 800,
+        duration: 800, // menambahkan function AOS sebagai durasi animasi
     });
 </script>
 <script>

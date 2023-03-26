@@ -82,6 +82,13 @@
 
 </body>
 <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+<script src="/js/bootstrap.bundle.min.js"></script>
+<script src="/js/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 800,
+    });
+</script>
 <script>
     function show(items) {
         document.querySelector('.textBox').value = items;

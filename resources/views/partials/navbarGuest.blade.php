@@ -7,6 +7,7 @@
     <title>Readteracy - Sewa Buku</title>
     <link rel="stylesheet" href="/css/navbar.css">
     <link rel="stylesheet" href="/css/dropdown.css">
+    <link rel="stylesheet" href="/css/theme.min.css">
 </head>
 <body>
     <header>

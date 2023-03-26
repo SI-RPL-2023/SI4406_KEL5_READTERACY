@@ -14,5 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('homeGuest');
+});
+
+Route::get('/Readteracy/home', function () {
+    return view('home');
 });

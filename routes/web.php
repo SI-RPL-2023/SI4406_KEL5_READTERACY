@@ -21,5 +21,5 @@ Route::get('/Readteracy/home', function () {
     return view('home');
 });
 
-// Auth
+// Authentication
 Route::get('/account/login-page', [AuthController::class, "login_page"]);

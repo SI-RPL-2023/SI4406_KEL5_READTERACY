@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\AuthController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,3 +20,6 @@ Route::get('/', function () {
 Route::get('/Readteracy/home', function () {
     return view('home');
 });
+
+// Authentication
+Route::get('/account/login-page', [AuthController::class, "login_page"]);

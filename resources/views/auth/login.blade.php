@@ -42,7 +42,7 @@
 
                 </header>
                 <main class="mb-auto col-12">
-                    <h1>Masuk dan mulai sewa</h1>
+                    <h1>Masuk dan mulai baca</h1>
                     <form class="row" method="post" action="/account/login/store">
                         @csrf
                         <div class="col-12">
@@ -82,7 +82,7 @@
                                     <strong>Remember Me</strong>
                                 </label>
                             </div>
-                            <button type="submit" class="btn btn-white btn-xl mb-3">Masuk!</button>
+                            <button type="submit" class="btn btn-white btn-xl mb-3">Login!</button>
                             <p>Don't have account? <a href="/account/register" style="text-decoration: none;"> Get Here</a></p>
                         </div>
                     </form>
@@ -90,9 +90,7 @@
                 </main>
             </div>
 
-            {{-- <div class="col-12 col-md-5 col-lg-6 col-xl-7 gradient">
 
-            </div> --}}
             <div class="bg col-12 col-md-5 col-lg-6 col-xl-7">
             </div>
         </div>

@@ -46,7 +46,7 @@
                     <form class="row" method="post" action="/account/login/store">
                         @csrf
                         <div class="col-12">
-                            <div class="mb-3">
+                            <div class="mb-2">
                                 <label for="email" class="form-label">Email address</label>
                                 <input type="email" class="form-control form-control-lg bg-gray-800 border-dark"
                                     id="email" aria-describedby="emailHelp" name="email">

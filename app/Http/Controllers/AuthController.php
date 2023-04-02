@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Auth as AuthLogin;
+use Intervention\Image\Facades\Image;
 
 class AuthController extends Controller
 {
@@ -65,5 +66,76 @@ class AuthController extends Controller
         } else {
             return redirect('/account/login-page')->withErrors('wrongAuth', 'Email dan Password tidak sesuai');
         }
+    }
+
+    // Logout nanti
+
+    public function profile_page()
+    {
+        return view('auth.profile');
+    }
+
+    public function update_profile( Request $request )
+    {
+        // $users = AuthLogin::user();
+        // $users->name = $request->name;
+        // $users->no_hp = $request->no_hp;
+        // $users->alamat = $request->alamat;
+        // $users->save();
+
+        $name = $request->input('name');
+        $no_hp = $request->input('no_hp');
+        $alamat = $request->input('alamat');
+        DB::table('users')
+        ->where('id', '=', AuthLogin::user()->id)
+        ->update([
+            'name' => $name,
+            'no_hp' => $no_hp,
+            'alamat' => $alamat,
+        ]);
+        return redirect('/Readteracy/profile')->with('updateProfile', "Profilemu berhasil di update");
+    }
+
+    public function update_profilePic(Request $request, $id)
+    {
+        $this->validate($request, [
+            'image' => 'required|mimes:jpg,jpeg,png,jfif',
+        ]);
+
+        $profile = Auth::find($id);
+        $profile -> update($request->except("_token", "updatePic"));
+
+        // if ( $request -> hasFile("image") ) {
+        //     $request -> file("image")->move("img/profile/", $request->file("image")->getClientOriginalName());
+        //     $profile -> image = $request -> file("image")->getClientOriginalName();
+        //     $profile -> save();
+        // }
+
+        if ($request->hasFile("image")) {
+            $image = $request->file("image");
+            $fileName = $image->getClientOriginalName();
+            $image = Image::make($image)->resize(479, 340);
+            $image->save("img/profile/".$fileName);
+            $profile->image = $fileName;
+            $profile->save();
+        }
+
+        return redirect("/Readteracy/profile")->with('profileUpdate', 'Profile Kamu Sukses Di Update');
+    }
+
+    public function delete_profilePic($id)
+    {
+        $user = Auth::find($id);
+        $img_path = public_path().'/img/profile/'.$user->image;
+
+        if (File::exists($img_path)) {
+            File::delete($img_path);
+
+            $user->update([
+                'image' => null,
+                ]);
+        }
+
+        return redirect("/Readteracy/profile")->with('profileUpdate', 'Profile Kamu Sukses Di Update');
     }
 }

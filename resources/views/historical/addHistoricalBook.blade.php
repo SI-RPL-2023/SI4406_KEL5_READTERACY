@@ -46,6 +46,21 @@
                         <span>Tahun Terbit</span>
                     </div>
 
+                    <div class="inputBox">
+                        <input type="text" name="nama_penerbit" id="nama_penerbit" required="required">
+                        <span>Nama Penerbit</span>
+                    </div>
+
+                    <div class="inputBox">
+                        <input type="text" name="halaman" id="halaman" required="required">
+                        <span>Total Halaman</span>
+                    </div>
+
+                    <div class="inputBox">
+                        <input type="text" name="isbn" id="isbn" required="required">
+                        <span>ISBN</span>
+                    </div>
+
 
                     <div class="col">
                         <span class="form-text">Image</span>

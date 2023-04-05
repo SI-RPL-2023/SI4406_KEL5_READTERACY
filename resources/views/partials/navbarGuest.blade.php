@@ -26,7 +26,7 @@
 
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0 list-group list-group-horizontal">
                     <li class="nav-item">
-                        <a class="nav-link" href="content.html">
+                        <a class="nav-link" href='/Readteracy/catalogue'>
                             Catalogue
                         </a>
                     </li>

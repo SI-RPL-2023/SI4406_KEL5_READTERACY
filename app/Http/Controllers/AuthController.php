@@ -69,6 +69,11 @@ class AuthController extends Controller
     }
 
     // Logout nanti
+    public function logout()
+    {
+        AuthLogin::logout();
+        return redirect('/');
+    }
 
     public function profile_page()
     {

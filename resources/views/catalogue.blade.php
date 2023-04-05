@@ -199,7 +199,7 @@
     </script>
 
     </html>
-@else
+
 @else
     @include('partials.navbarGuest')
     <!DOCTYPE html>
@@ -339,5 +339,4 @@
     </script>
     </html>
 
-@endif
 @endif

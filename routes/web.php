@@ -24,7 +24,7 @@ Route::get('/Readteracy/home', function () {
     return view('home');
 });
 
-// Authentication
+// Authentication Account
 Route::get('/account/login-page', [AuthController::class, "login_page"]);
 Route::get('/account/register', [AuthController::class, "register_page"]);
 Route::post('/account/register/store', [AuthController::class, "register_store"]);
@@ -40,6 +40,7 @@ Route::get('Readteracy/account/updateProfile', [AuthController::class, "update_p
 
 // Catalogue
 Route::get('/Readteracy/catalogue', [CatalogueController::class, "catalogue_page"]);
+
 
 
 // Genre Historical

@@ -17,9 +17,6 @@ return new class extends Migration
             $table->string('judul');
             $table->text('sinopsis')->nullable();
             $table->string('nama_penulis');
-            $table->string('nama_penerbit')->nullable();
-            $table->string('halaman')->nullable();
-            $table->string('isbn')->nullable();
             $table->string('genre');
             $table->string('tahun_terbit');
             $table->string('image')->nullable();

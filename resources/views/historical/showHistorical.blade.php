@@ -52,10 +52,10 @@
                 <div class="col mt-5">
                     <h1 class="mt-5 text-center text-white">Historical</h1>
                     @if (Auth::user()->role == 1 || Auth::user()->role == 2)
-                        <div class="mx-auto text-center">
-                            <a href="/Readteracy/historical/addBook" class="btn btn-light">Tambah Data</a>
-                        </div>
                     @endif
+                    <div class="mx-auto text-center">
+                        <a href="/Readteracy/historical/addBook" class="btn btn-light">Tambah Data</a>
+                    </div>
                 </div>
             </div>
         </div>

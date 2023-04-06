@@ -24,11 +24,12 @@ Route::get('/Readteracy/home', function () {
     return view('home');
 });
 
-// Authentication
+// Authentication Account
 Route::get('/account/login-page', [AuthController::class, "login_page"]);
 Route::get('/account/register', [AuthController::class, "register_page"]);
 Route::post('/account/register/store', [AuthController::class, "register_store"]);
 Route::post('/account/login/store',[AuthController::class,'login_store']);
+Route::get('/account/auth/logout', [AuthController::class, "logout"]);
 
 // Profile
 Route::get('/Readteracy/profile', [AuthController::class, "profile_page"]);
@@ -41,6 +42,9 @@ Route::get('Readteracy/account/updateProfile', [AuthController::class, "update_p
 Route::get('/Readteracy/catalogue', [CatalogueController::class, "catalogue_page"]);
 
 
+
 // Genre Historical
 Route::get('/Readteracy/genre/Historical', [HistoricalController::class, "viewPage_historical"]);
 Route::get('/Readteracy/historical/addBook', [HistoricalController::class, "addBookHistorical_page"])->middleware('what_role');
+Route::post('/Readteracy/historical/addBook/store', [HistoricalController::class, "addBookHistorical_store"])->middleware('what_role');
+Route::get('/Readteracy/genre/Historical/{id}/delete', [HistoricalController::class, "destroy_book"])->middleware('what_role');

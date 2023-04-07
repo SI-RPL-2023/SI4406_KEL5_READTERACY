@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="/css/dropdown.css">
     </head>
 
-    <body class="bg-black">
+    <body class="bg-black text-white">
         <div class="position-absolute w-100 h-50 bg-black top-0 start-0"></div>
         <div class="position-relative py-vh-5 bg-cover bg-center"
             style="background-image: url(/img/buku1.png)">

@@ -1,8 +1,8 @@
-@include('partials.navbarAuth')
+@extends('partials.navbarAuth')
 
+@section('content')
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,11 +15,10 @@
         }
     </style>
 </head>
-
 <body class="bg">
-    <section class="mb-5 mt-5 py-5">
+    <section class=" mb-5 mt-5 py-5">
         <div class="container py-vh-5 mb-5">
-            <form action="/Readteracy/historical/addBook/store" method="post" enctype="multipart/form-data">
+            <form action="/Readteracy/education/addBook/store" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="card mt-5 mx-auto">
                     <a class="crud">Tambah Buku</a>
@@ -48,19 +47,32 @@
                         <span>Tahun Terbit</span>
                     </div>
 
+                    <div class="inputBox">
+                        <input type="text" name="nama_penerbit" id="nama_penerbit" required="false">
+                        <span>Nama Penerbit</span>
+                    </div>
+
+                    <div class="inputBox">
+                        <input type="text" name="halaman" id="halaman" required="false">
+                        <span>Total Halaman</span>
+                    </div>
+
+                    <div class="inputBox">
+                        <input type="text" name="isbn" id="isbn" required="false">
+                        <span>ISBN</span>
+                    </div>
 
                     <div class="col">
                         <span class="form-text">Image</span>
-                        <input type="file" class="form-control mt-2" name="image" id="image" required multiple>
+                        <input type="file" class="form-control mt-2" name="image" id="image" required="required">
                     </div>
 
-                    <button class="enter" name="addBookHistorical">Enter</button>
+                    <button class="enter" name="addBookEducation">GO</button>
                 </div>
             </form>
         </div>
     </section>
-
-    @include('partials.footer')
 </body>
-
 </html>
+
+@endsection

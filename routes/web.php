@@ -37,3 +37,8 @@ Route::get('Readteracy/account/updateProfile', [AuthController::class, "update_p
 
 // Catalogue
 Route::get('/Readteracy/catalogue', [CatalogueController::class, "catalogue_page"]);
+
+// Genre Education
+Route::get('/Readteracy/genre/Education', [EducationController::class, "viewPage_education"]);
+Route::get('/Readteracy/education/addBook', [EducationController::class, "addBookEducation_page"])->middleware('what_role');
+Route::post('/Readteracy/education/addBook/store', [EducationController::class, "addBookEducation_store"])->middleware('what_role');

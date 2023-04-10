@@ -25,10 +25,12 @@ Route::get('/Readteracy/home', function () {
 });
 
 // Authentication Account
+Route::get('/account/auth/logout', [AuthController::class, "logout"]);
 Route::get('/account/login-page', [AuthController::class, "login_page"]);
 Route::get('/account/register', [AuthController::class, "register_page"]);
 Route::post('/account/register/store', [AuthController::class, "register_store"]);
 Route::post('/account/login/store',[AuthController::class,'login_store']);
+
 
 // Profile
 Route::get('/Readteracy/profile', [AuthController::class, "profile_page"]);

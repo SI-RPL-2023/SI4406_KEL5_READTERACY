@@ -92,11 +92,13 @@
                                                 <div class="col-sm-2 mt-3 d-flex">
                                                     @if (Auth::user()->role == 1 || Auth::user()->role == 2)
                                                         <div class="mb-3">
-                                                            <a class="link-fancy link-fancy-black">Edit</a>
+
+                                                            <a class="buttonGenre">Edit</a>
                                                         </div>
                                                         <hr>
                                                         <div class="mb-3">
-                                                            <a class="link-fancy link-fancy-black">Hapus</a>
+                                                            <a class="buttonGenre">Hapus</a>
+
                                                         </div>
                                                     @endif
                                                 </div>

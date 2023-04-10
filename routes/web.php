@@ -49,3 +49,8 @@ Route::get('/Readteracy/genre/Historical', [HistoricalController::class, "viewPa
 Route::get('/Readteracy/historical/addBook', [HistoricalController::class, "addBookHistorical_page"])->middleware('what_role');
 Route::post('/Readteracy/historical/addBook/store', [HistoricalController::class, "addBookHistorical_store"])->middleware('what_role');
 Route::get('/Readteracy/genre/Historical/{id}/delete', [HistoricalController::class, "destroy_book"])->middleware('what_role');
+
+// Genre Education
+Route::get('/Readteracy/genre/Education', [EducationController::class, "viewPage_education"]);
+Route::get('/Readteracy/education/addBook', [EducationController::class, "addBookEducation_page"])->middleware('what_role');
+Route::post('/Readteracy/education/addBook/store', [EducationController::class, "addBookEducation_store"])->middleware('what_role');

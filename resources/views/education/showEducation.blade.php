@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="/css/dropdown.css">
     </head>
 
-    <body class="bg-black">
+    <body class="bg-black text-white mt-0">
         <div class="position-absolute w-100 h-50 bg-black top-0 start-0"></div>
         <div class="position-relative py-vh-5 bg-cover bg-center"
             style="background-image: url(/img/buku1.png)">
@@ -87,11 +87,11 @@
                                             <div class="col-sm-2 mt-3 d-flex">
                                                 @if (Auth::user()->role == 1 || Auth::user()->role == 2)
                                                     <div class="mb-3">
-                                                        <button class="buttonGenre">Edit</button>
+                                                        <a class="buttonGenre">Edit</a>
                                                     </div>
                                                     <hr>
                                                     <div class="mb-3">
-                                                        <button class="buttonGenre">Hapus</button>
+                                                        <a class="buttonGenre">Hapus</a>
                                                     </div>
                                                 @endif
                                             </div>

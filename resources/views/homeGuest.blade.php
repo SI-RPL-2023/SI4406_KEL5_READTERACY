@@ -3,6 +3,7 @@
 @section('content')
     <!DOCTYPE html>
     <html class="h-100" lang="en">
+
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
@@ -57,6 +58,7 @@
             }
         </style>
     </head>
+
     <body class="bg-black text-white mt-0" data-bs-spy="scroll" data-bs-target="#navScroll">
         <main>
             <div class="position-absolute w-100 h-50 bg-black top-0 start-0" data-aos="fade"></div>
@@ -135,8 +137,11 @@
                             </h3>
                         </div>
                         <div class="col-12 col-lg-5" data-aos="fade-up">
-                            <h3 class="pt-5">Readteracy merupakan langkah selanjutnya dalam proses pinjam-meminjam buku.</h3>
-                            <p class="text-secondary">Dengan Readteracy, anda dapat meminjam buku hanya dalam beberapa klik saja, praktis untuk masyarakat Indonesia yang kurang suka dengan segala suatu yang bersifat rumit.<br>
+                            <h3 class="pt-5">Readteracy merupakan langkah selanjutnya dalam proses pinjam-meminjam buku.
+                            </h3>
+                            <p class="text-secondary">Dengan Readteracy, anda dapat meminjam buku hanya dalam beberapa klik
+                                saja, praktis untuk masyarakat Indonesia yang kurang suka dengan segala suatu yang bersifat
+                                rumit.<br>
                                 <a href="#" class="link-fancy link-fancy-light me-2">Tell me more</a>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
@@ -144,7 +149,8 @@
                                         d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
                                 </svg>
                             </p>
-                            <h3 class="border-top border-secondary pt-5 mt-5">Readteracy emberikan media pembelajaran yang efisien</h3>
+                            <h3 class="border-top border-secondary pt-5 mt-5">Readteracy emberikan media pembelajaran yang
+                                efisien</h3>
                             <p class="text-secondary"> Saat para pelajar cenderung mudah bosan dan susah mencari jawaban,
                                 maka buku elektornik ini bisa dimanfaatkan sebagai media pembelajaran yang efisien.
                                 Dengan buku jenis ini, para pelajar akan lebih tertarik untuk mempelajarinya.<br>
@@ -159,11 +165,38 @@
                     </div>
                 </div>
             </div>
+
+            <div class="bg-black">
+                <div class="container px-vw-3 py-vh-3">
+                    <div class="row d-flex align-items-center">
+                        <div class="col-12 col-lg-5 text-center text-lg-end" data-aos="zoom-in-right">
+                            <span class="h5 text-secondary fw-lighter">Tarif kami</span>
+                            <h2 class="display-4">Kami membantu memajukan pendidikan masyarakat.</h2>
+                        </div>
+                        <div class="col-12 col-lg-7 bg-dark rounded-5 py-vh-3 text-center my-5" data-aos="zoom-in-up">
+                            <h2 class="display-huge mb-5">
+                                <span class="fs-4 me-2 fw-light">Rp. </span><span
+                                    class="border-bottom border-5">Free</span><span class="fs-6 fw-light">without
+                                    tax</span>
+                            </h2>
+                            <p class="lead text-secondary">Kami memberikan semua pengetahuan kami secara gratis, tanpa
+                                dipungut biaya apapun. Kami senang membagikan pengetahuan kepada siapa saja.</p>
+                            <a href="/account/register" class="btn btn-xl btn-light">Sign up
+                                <svg xmlns="http://www.w3.org/2000/sv" width="16" height="16" fill="currentColor"
+                                    class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </main>
 
         @include('partials.footer')
 
     </body>
-    </html>
 
+    </html>
 @endsection

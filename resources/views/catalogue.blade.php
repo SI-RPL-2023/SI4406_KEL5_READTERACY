@@ -97,7 +97,7 @@
                                                         <hr>
                                                         <div class="mb-3">
                                                             <a class="buttonGenre">Hapus</a>
-                                                            
+            
                                                         </div>
                                                     @endif
                                                 </div>

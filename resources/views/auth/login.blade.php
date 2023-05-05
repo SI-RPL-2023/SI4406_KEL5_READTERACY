@@ -29,7 +29,7 @@
             <div class="col-12 col-md-7 col-lg-6 col-xl-5 d-flex align-items-start flex-column px-vw-5">
 
                 <header class="mb-auto py-vh-2 col-12">
-                    <a class="navbar-brand pe-md-4 fs-4 col-12 col-md-auto text-center" href="index.html">
+                    <a class="navbar-brand pe-md-4 fs-4 col-12 col-md-auto text-center" href="/">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                             class="bi bi-stack" viewBox="0 0 16 16">
                             <path

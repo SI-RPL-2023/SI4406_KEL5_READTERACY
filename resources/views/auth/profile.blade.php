@@ -16,13 +16,43 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
         <!-- MDB -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css" rel="stylesheet" />
-        <link rel="stylesheet" href="{{ asset('/plugins/ijabocrop/ijaboCropTool.min.css') }}">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="/css/dropdown.css">
         <style>
             input[readonly] {
                 background-color: #f2f2f2;
             }
+
+            .img-wrap {
+                position: relative;
+                display: inline-block;
+                font-size: 0;
+            }
+
+            .img-wrap .close {
+                position: absolute;
+                top: 2px;
+                right: 2px;
+                z-index: 100;
+                background-color: #f80000;
+                padding: 10px 8px 8px;
+                color: #000;
+                font-weight: bold;
+                cursor: pointer;
+                opacity: .2;
+                text-align: center;
+                font-size: 22px;
+                line-height: 10px;
+                border-radius: 50%;
+            }
+
+            .img-wrap:hover .close {
+                opacity: 1;
+                transition: ease-in 1s;
+                transform: translate(9px);
+            }
         </style>
-        <link rel="stylesheet" href="/css/dropdown.css">
+
     </head>
 
     <body>
@@ -41,21 +71,44 @@
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="card mb-4" data-aos="zoom-in-right">
-                            <form action="/Readteracy/account/{{ Auth::user()->id }}/profile-picture" method="post" enctype="multipart/form-data">
+                            <form action="/Readteracy/account/{{ Auth::user()->id }}/profile-picture" method="post"
+                                enctype="multipart/form-data">
                                 @csrf
                                 <div class="card-body text-center">
-                                    @if ( Auth::user()->image == NULL )
-                                        <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}&background=random&color=28a745"
-                                        alt="avatar" class="rounded-circle img-fluid" style="width: 150px;" id="image_preview">
+                                    @if (Auth::user()->image == null)
+                                        <div class="img-wrap">
+                                            <span class="close">
+                                                <a href="/Readteracy/account/{{ Auth::user()->id }}/delete/profile-picture">
+                                                    <i class="bi bi-trash3"
+                                                        style="font-size: 1.5rem; color: rgb(255, 255, 255);"></i>
+                                                </a>
+                                            </span>
+                                            <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}&background=random&color=28a745"
+                                                alt="avatar" class="rounded-circle img-fluid" style="width: 150px;"
+                                                id="image_preview">
+                                        </div>
                                     @else
-                                        <img src="/img/profile/{{ Auth::user()->image }}"
-                                        alt="avatar" class="rounded-circle img-fluid" style="width: 150px; height: 150px" id="image_preview">
+                                        <div class="img-wrap">
+                                            <span class="close">
+                                                <a href="/Readteracy/account/{{ Auth::user()->id }}/delete/profile-picture">
+                                                    <i class="bi bi-trash3"
+                                                        style="font-size: 1.5rem; color: rgb(255, 255, 255);"></i>
+                                                </a>
+                                            </span>
+                                            <img src="/img/profile/{{ Auth::user()->image }}" alt="avatar"
+                                                class="rounded-circle img-fluid" style="width: 180px; height: 180px"
+                                                id="image_preview">
+                                        </div>
+                                        {{-- <img src="/img/profile/{{ Auth::user()->image }}"
+                                        alt="avatar" class="rounded-circle img-fluid" style="width: 150px; height: 150px" id="image_preview"> --}}
                                     @endif
                                     <div class="col mt-3">
-                                        <label for="image" class="btn btn-dark"><i class="fa-solid fa-upload"></i> Upload</label>
-                                        <input type="file" name="image" class="form-control" id="image" style="display: none;">
+                                        <label for="image" class="btn btn-dark"><i class="fa-solid fa-upload"></i> Pilih
+                                            gambar</label>
+                                        <input type="file" name="image" class="form-control" id="image"
+                                            style="display: none;">
                                         <button class="btn btn-primary mt-3" name="updatePic">Ubah Gambar</button>
-                                        <a class="btn btn-danger mt-3" href="/Readteracy/account/{{ Auth::user()->id }}/delete/profile-picture">Hapus Foto Profile</a>
+                                        {{-- <a class="btn btn-danger mt-3" href="/Readteracy/account/{{ Auth::user()->id }}/delete/profile-picture">Hapus Foto Profile</a> --}}
                                         <hr>
                                         {{-- <input type="file" class="form-control" name="image2" id="image2" style="display: none;">
                                         <a href="javascript:void(0)" class="btn btn-dark btn-block" id="change_pic_btn">Ubah Gambar</a> --}}
@@ -73,59 +126,11 @@
                                     <p class="text-muted mb-4">{{ Auth::user()->alamat }}</p>
                                 </div>
                             </form>
-
                         </div>
                         <div class="card mb-4 mb-md-0" data-aos="zoom-in-up">
                             <div class="card-body">
                                 <p class="mb-4"><span class="text-primary font-italic me-1">Mini Library</span>of {{ Auth::user()->name }}</p>
-                                <div class="row mb-2">
-                                    <p class="mb-1 fw-bold">Kita pergi hari ini</p>
-                                    <div class="col-xl-3">
-                                        <img src="/img/buku/fiksi1.jpg" width="80px" alt="">
-                                    </div>
-                                    <div class="col-xl-9">
-                                        <?php
-                                            $sinopsis = "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates vitae";
-                                            if (strlen($sinopsis) > 10) {
-                                                $sinopsis = Str::substr($sinopsis, 0, 50) . '...';
-                                                echo $sinopsis;
-                                            };
-                                        ?>
-                                    </div>
-                                </div>
-                                <hr>
-
-                                <div class="row mb-2">
-                                    <p class="mb-1 fw-bold">Kita pergi hari ini</p>
-                                    <div class="col-xl-3">
-                                        <img src="/img/buku/fiksi1.jpg" width="80px" alt="">
-                                    </div>
-                                    <div class="col-xl-9">
-                                        <?php
-                                            $sinopsis = "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates vitae";
-                                            if (strlen($sinopsis) > 10) {
-                                                $sinopsis = Str::substr($sinopsis, 0, 50) . '...';
-                                                echo $sinopsis;
-                                            };
-                                        ?>
-                                    </div>
-                                </div>
-                                <hr>
-
-                                <div class="row mb-2">
-                                    <p class="mb-1 fw-bold">Kita pergi hari ini</p>
-                                    <div class="col-xl-3">
-                                        <img src="/img/buku/fiksi1.jpg" width="80px" alt="">
-                                    </div>
-                                    <div class="col-xl-9">
-                                        <?php
-                                            $sinopsis = "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates vitae";
-                                            if (strlen($sinopsis) > 10) {
-                                                $sinopsis = Str::substr($sinopsis, 0, 50) . '...';
-                                                echo $sinopsis;
-                                            };
-                                        ?>
-                                    </div>
+                                    <span>click here to see more <a href="#">my libraries</a></span>
                                 </div>
                             </div>
                         </div>
@@ -141,10 +146,12 @@
                                             <p class="mb-0">Name</p>
                                         </div>
                                         <div class="col-sm-4">
-                                            <input class="form-control" id="nameInput" type="text" value="{{ Auth::user()->name }}" name="name" readonly>
+                                            <input class="form-control" id="nameInput" type="text"
+                                                value="{{ Auth::user()->name }}" name="name" readonly>
                                         </div>
                                         <div class="col offset-sm-3">
-                                            <a class="btn btn-dark" id="nameButton"><i class="fa-solid fa-pen-to-square"></i></a>
+                                            <a class="btn btn-dark" id="nameButton"><i
+                                                    class="fa-solid fa-pen-to-square"></i></a>
                                         </div>
                                     </div>
                                     <hr>
@@ -164,13 +171,18 @@
                                         </div>
                                         <div class="col-sm-4">
                                             @if (Auth::user()->no_hp === null)
-                                                <input class="form-control" id="no_hpInput" type="text" value="No hp tidak tercantum" name="no_hp" readonly>
+                                                <input class="form-control" id="no_hpInput" type="text"
+                                                    placeholder="No hp tidak tercantum" name="no_hp"
+                                                    inputmode="numeric" readonly>
                                             @else
-                                                <input class="form-control" id="no_hpInput" type="text" value="{{ Auth::user()->no_hp }}" name="no_hp" readonly>
+                                                <input class="form-control" id="no_hpInput" type="text"
+                                                    value="{{ Auth::user()->no_hp }}" name="no_hp" inputmode="numeric"
+                                                    readonly>
                                             @endif
                                         </div>
                                         <div class="col offset-sm-3">
-                                            <a class="btn btn-dark" id="no_hpButton"><i class="fa-solid fa-pen-to-square"></i></a>
+                                            <a class="btn btn-dark" id="no_hpButton"><i
+                                                    class="fa-solid fa-pen-to-square"></i></a>
                                         </div>
                                     </div>
                                     <hr>
@@ -180,23 +192,91 @@
                                         </div>
                                         <div class="col-sm-4">
                                             @if (Auth::user()->alamat == null)
-                                                <input class="form-control" id="alamatInput" type="text" value="Belum memiliki alamat" name="alamat" readonly>
+                                                <input class="form-control" id="alamatInput" type="text"
+                                                    placeholder="Belum memiliki alamat" name="alamat" readonly>
                                             @else
-                                                <input class="form-control" id="alamatInput" type="text" value="{{ Auth::user()->alamat }}" name="alamat" readonly>
+                                                <input class="form-control" id="alamatInput" type="text"
+                                                    value="{{ Auth::user()->alamat }}" name="alamat" readonly>
                                             @endif
                                         </div>
                                         <div class="col offset-sm-3">
-                                            <a class="btn btn-dark" id="alamatButton"><i class="fa-solid fa-pen-to-square"></i></a>
+                                            <a class="btn btn-dark" id="alamatButton"><i
+                                                    class="fa-solid fa-pen-to-square"></i></a>
                                         </div>
                                     </div>
 
                                     <hr>
+                                    @if (Auth::user()->role === 2)
+                                        <a href="/Readteracy/data-peminjaman" class="btn btn-primary btn-lg mb-3">Data peminjaman buku</a>
+                                        <a href="/Readteracy/genre/genreList" class="btn btn-primary btn-lg mb-3">Tambah Genre</a>
+                                    @endif
                                     <div class="row">
-                                        <button type="submit" name="updateProfile" class="btn btn-dark">Update Profile</button>
+                                        <button type="submit" name="updateProfile" class="btn btn-dark">Update
+                                            Profile</button>
                                     </div>
                                 </div>
                             </form>
                         </div>
+                        @if (Auth::user()->role === 1)
+                        <div class="row" data-aos="fade-up">
+                            <div class="col-md-12">
+                                <div class="card mb-4 mb-md-0">
+                                    <div class="card-body">
+                                        <p class="mb-4"><span class="text-primary font-italic me-1">Readteracy</span>
+                                            Info
+                                        </p>
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="card mt-3 border shadow" style="width: 18rem;">
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <i class="fa-solid fa-book fa-4x mx-3 mt-3"></i>
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                            <div class="card-body">
+                                                                <h5 class="card-title">Total books</h5>
+                                                                <p class="card-text fw-bold">{{ $allBooks }}</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="card mt-3 border shadow" style="width: 18rem;">
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <i class="fa-solid fa-users fa-4x mx-3 mt-3"></i>
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                            <div class="card-body">
+                                                                <h5 class="card-title">Users</h5>
+                                                                <p class="card-text fw-bold">{{ $count_users }}</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="card mt-3 border shadow justify-content-center" style="width: 15rem;">
+                                                    <div class="row">
+                                                        <div class="col-md-3">
+                                                            <i class="fa-solid fa-layer-group fa-4x mx-3 mt-3"></i>
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <div class="card-body">
+                                                                <h5 class="card-title">Genre's</h5>
+                                                                <p class="card-text fw-bold">{{ $allGenres }}</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @endif
                     </div>
                 </div>
             </div>

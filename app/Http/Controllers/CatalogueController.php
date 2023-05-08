@@ -13,6 +13,7 @@ class CatalogueController extends Controller
 {
     public function catalogue_page( Request $request )
     {
+
         $genre = Genre::all();
         if ($request->genre) {
             $books = BooksCatalogue::whereHas('genre', function($query) use($request) {
@@ -101,5 +102,6 @@ class CatalogueController extends Controller
         $peminjamanBuku = PeminjamanBuku::where('user_id', $user->id)
         ->where('book_id', $detail_book->id)->orderByDesc('id')->first();
         return view('books.detailBook', compact(['detail_book', 'peminjamanBuku', 'genre']));
+
     }
 }

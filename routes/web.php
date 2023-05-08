@@ -53,7 +53,7 @@ Route::get('/Readteracy/catalogue', [CatalogueController::class, "catalogue_page
 Route::middleware('what_role')->group(function() {
     Route::get('/Readteracy/catalogue/addBook', [CatalogueController::class, "addBook_page"]);
     Route::post('/Readteracy/catalogue/addBook/store', [CatalogueController::class, "addBook_store"]);
-    // Route::get('/Readteracy/editBook/{slug}', [CatalogueController::class, "editBook_page"]);
-    // Route::put('/Readteracy/catalogue/editBook/{slug}/store', [CatalogueController::class, "editBook_store"]);
+    Route::get('/Readteracy/editBook/{slug}', [CatalogueController::class, "editBook_page"]);
+    Route::put('/Readteracy/catalogue/editBook/{slug}/store', [CatalogueController::class, "editBook_store"]);
     // Route::get('/Readteracy/delete-book/{slug}', [CatalogueController::class, "destroy"]);
 });

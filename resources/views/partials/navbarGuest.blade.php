@@ -27,22 +27,22 @@
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0 list-group list-group-horizontal">
                     <li class="nav-item">
                         <a class="nav-link" href='/Readteracy/catalogue'>
-                            Catalogue
+                            Katalog
                         </a>
                     </li>
                     <li class="nav-item">
                         <div class="dropdown">
                             <input type="text" id="value" class="textBox" placeholder="Genre's">
                             <div class="option">
-                                <div onclick="show('Historical')"><ion-icon name="planet" style="color:white;"></ion-icon><a style="text-decoration: none;" class="text-white" href="/Readteracy/genre/Historical">Historical</a></div>
-                                <div onclick="show('Education')"><ion-icon name="book" style="color:white;"></ion-icon><a style="text-decoration: none;" class="text-white" href="/Readteracy/genre/Education">Education</a></div>
+                                <div onclick="show('Historical')"><ion-icon name="planet" style="color:white;"></ion-icon><a style="text-decoration: none;" class="text-white" href="/Readteracy/genre/Historical">Sejarah</a></div>
+                                <div onclick="show('Education')"><ion-icon name="book" style="color:white;"></ion-icon><a style="text-decoration: none;" class="text-white" href="/Readteracy/genre/Education">Edukasi</a></div>
                                 <div onclick="show('Romansa')"><ion-icon name="rose" style="color:white;"></ion-icon><a style="text-decoration: none;" class="text-white" href="#">Romansa</a></div>
                             </div>
                         </div>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="system.html">
-                            About
+                            Tentang
                         </a>
                     </li>
                 </ul>

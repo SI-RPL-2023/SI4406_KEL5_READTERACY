@@ -2,7 +2,6 @@
     @include('partials.navbarAuth')
     <!DOCTYPE html>
     <html lang="en">
-
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +12,9 @@
         <link rel="stylesheet" href="/css/dropdown.css">
     </head>
 
-    <body class="bg-black">
+
+    <body class="bg-black text-white mt-0">
+
         <div class="position-absolute w-100 h-50 bg-black top-0 start-0"></div>
         <div class="position-relative py-vh-5 bg-cover bg-center"
             style="background-image: url(/img/buku1.png)">
@@ -52,10 +53,10 @@
                 <div class="col mt-5">
                     <h1 class="mt-5 text-center text-white">Historical</h1>
                     @if (Auth::user()->role == 1 || Auth::user()->role == 2)
+                        <div class="mx-auto text-center">
+                            <a href="/Readteracy/historical/addBook" class="btn btn-light">Tambah Data</a>
+                        </div>
                     @endif
-                    <div class="mx-auto text-center">
-                        <a href="/Readteracy/historical/addBook" class="btn btn-light">Tambah Data</a>
-                    </div>
                 </div>
             </div>
         </div>

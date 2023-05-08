@@ -50,14 +50,10 @@ Route::get('/Readteracy/delete/{slug}/genre', [GenreController::class, "delete_g
 
 // Catalogue
 Route::get('/Readteracy/catalogue', [CatalogueController::class, "catalogue_page"]);
-
-// Genre Historical
-Route::get('/Readteracy/genre/Historical', [HistoricalController::class, "viewPage_historical"]);
-Route::get('/Readteracy/historical/addBook', [HistoricalController::class, "addBookHistorical_page"])->middleware('what_role');
-Route::post('/Readteracy/historical/addBook/store', [HistoricalController::class, "addBookHistorical_store"])->middleware('what_role');
-Route::get('/Readteracy/genre/Historical/{id}/delete', [HistoricalController::class, "destroy_book"])->middleware('what_role');
-
-// Genre Education
-Route::get('/Readteracy/genre/Education', [EducationController::class, "viewPage_education"]);
-Route::get('/Readteracy/education/addBook', [EducationController::class, "addBookEducation_page"])->middleware('what_role');
-Route::post('/Readteracy/education/addBook/store', [EducationController::class, "addBookEducation_store"])->middleware('what_role');
+Route::middleware('what_role')->group(function() {
+    Route::get('/Readteracy/catalogue/addBook', [CatalogueController::class, "addBook_page"]);
+    Route::post('/Readteracy/catalogue/addBook/store', [CatalogueController::class, "addBook_store"]);
+    // Route::get('/Readteracy/editBook/{slug}', [CatalogueController::class, "editBook_page"]);
+    // Route::put('/Readteracy/catalogue/editBook/{slug}/store', [CatalogueController::class, "editBook_store"]);
+    // Route::get('/Readteracy/delete-book/{slug}', [CatalogueController::class, "destroy"]);
+});

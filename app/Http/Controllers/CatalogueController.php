@@ -12,6 +12,6 @@ class CatalogueController extends Controller
     {
         $historicalBook = genreHistorical::all();
         // $educationBook = genreEducation::all();
-        return view('catalogue', compact(['historicalBook']));
+        return view('book.catalogue', compact(['historicalBook']));
     }
 }

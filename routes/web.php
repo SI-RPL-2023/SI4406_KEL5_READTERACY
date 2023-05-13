@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GenreController;
+use App\Http\Controllers\NavbarController;
 use App\Http\Controllers\CatalogueController;
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\HistoricalController;
@@ -18,13 +19,13 @@ use App\Http\Controllers\HistoricalController;
 |
 */
 
-Route::get('/', function () {
-    return view('homeGuest');
-});
+Route::get('/', [NavbarController::class, "all_genre_navbarGuest"])->middleware('guest');
+// Route::get('/', function () {
+//     return view('homeGuest');
+// });
 
-Route::get('/Readteracy/home', function () {
-    return view('home');
-});
+Route::get('/Readteracy/home', [NavbarController::class, "all_genre_navbarAuth"]);
+Route::get('/notification', [NavbarController::class, "notification"]);
 
 // Authentication Account
 Route::get('/account/auth/logout', [AuthController::class, "logout"]);

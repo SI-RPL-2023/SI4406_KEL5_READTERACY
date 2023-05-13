@@ -35,7 +35,7 @@
                     <li class="nav-item">
                         <div class="dropdown">
                             <input type="text" id="value" class="textBox" placeholder="Genre's">
-                            @if (Request::url() !== url('/Readteracy/genre/genreList'))
+                            {{-- @if (Request::url() !== url('/Readteracy/genre/genreList'))
                                 <div class="option">
                                     @foreach ( $genre as $items )
                                         <div onclick="show('{{ $items->nama_genre }}')"><ion-icon name="book" class="text-white"></ion-icon> <a style="text-decoration: none;" class="text-white" href="/Readteracy/catalogue?genre={{ $items->slug }}">{{ $items->nama_genre }}</a></div>
@@ -47,7 +47,7 @@
                                     <div onclick="show('Education')"><ion-icon name="book"></ion-icon><a style="text-decoration: none;" class="text-white" href="/Readteracy/genre/Education">Education</a></div>
                                     <div onclick="show('Romansa')"><ion-icon name="rose"></ion-icon><a style="text-decoration: none;" class="text-white" href="#">Romansa</a></div>
                                 </div>
-                            @endif
+                            @endif --}}
                         </div>
                     </li>
                     <li class="nav-item">

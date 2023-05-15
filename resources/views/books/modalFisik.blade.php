@@ -1,4 +1,4 @@
-[09:14, 5/13/2023] Rofi: <!-- Modal Fisik -->
+<!-- Modal Fisik -->
     <link rel="stylesheet" href="/css/toastr.css">
     <div class="modal fade" id="bukuFisik" tabindex="-1" aria-labelledby="ModalLabelFisik" aria-hidden="true">
         <div class="modal-dialog">

@@ -50,9 +50,52 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ( $borrowedBooks as $borrowedBook )
+                            @foreach ( $siPeminjam as $peminjam )
+                                @if ( $peminjam->id === $borrowedBook->user_id )
+                                    <tr>
+                                        <td>{{ $peminjam->name }}</td>
+                                        <td>{{ $borrowedBook->judul }}</td>
+                                        <td>{{ $peminjam->no_hp }}</td>
+                                        <td>{{ $borrowedBook->rent_date }}</td>
+                                        <td>{{ $borrowedBook->return_date }}</td>
+                                        <td>{{ $borrowedBook->actual_return_date }}</td>
+                                        <td>{{ $borrowedBook->tipe }}</td>
+                                        <td>{{ $borrowedBook->status }}</td>
+                                        <td>
+                                            <form action="/Readteracy/{{ $borrowedBook->id }}/ubah-status/data-peminjaman" method="post">
+                                                @method('put')
+                                                @csrf
+                                                <div class="">
+                                                    <select name="status" id="status" class="btn btn-dark">
+                                                        <option @if ( $borrowedBook->status === "in stock") selected @endif value="in stock" ><p class="text-left">in stock</p></option>
+                                                        <option @if ( $borrowedBook->status === "sedang dipinjam") selected @endif value="sedang dipinjam">sedang dipinjam</option>
+                                                        <option @if ( $borrowedBook->status === "dikembalikan") selected @endif value="dikembalikan">dikembalikan</option>
+                                                    </select>
+                                                    <button class="btn btn-lg btn-dark">Konfirmasi</button>
+                                                </div>
+                                                <div class="mt-3">
 
+                                                </div>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endif
+                            @endforeach
+                        @endforeach
                     </tbody>
                 </table>
             </div>
         </section>
     </body>
+
+    </html>
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+    <script>
+        let table = new DataTable('#dataPeminjaman', {
+            responsive: true,
+            scrollX: true,
+        });
+    </script>
+@endsection

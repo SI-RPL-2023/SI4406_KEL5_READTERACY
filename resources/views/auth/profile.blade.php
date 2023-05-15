@@ -130,8 +130,38 @@
                         <div class="card mb-4 mb-md-0" data-aos="zoom-in-up">
                             <div class="card-body">
                                 <p class="mb-4"><span class="text-primary font-italic me-1">Mini Library</span>of {{ Auth::user()->name }}</p>
+                                    @foreach ($peminjaman as $borrow)
+                                        <div class="row mb-2">
+                                            <p class="mb-1 fw-bold">{{ $borrow->judul }}</p>
+                                            <div class="col-xl-3">
+                                                <img src="/img/buku/{{ $borrow->image }}" width="80px" alt="">
+                                            </div>
+                                            {{-- "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates vitae" --}}
+                                            <div class="col-xl-7">
+                                                <?php
+                                                $sinopsis = $borrow->sinopsis;
+                                                if (strlen($sinopsis) > 10) {
+                                                    $sinopsis = Str::substr($sinopsis, 0, 50) .'...';
+                                                    echo $sinopsis;
+                                                }
+                                                ?>
+                                            </div>
+                                            <form action="/Readteracy/return-book" method="post">
+                                                @csrf
+                                                <input type="hidden" value="{{ $borrow->id }}" name="id">
+                                                <input type="hidden" value="{{ $borrow->user_id }}" name="user_id">
+                                                <input type="hidden" value="{{ $borrow->book_id }}" name="book_id">
+                                                @if ($borrow->tipe === 'Fisik' && $borrow->status === 'dikembalikan')
+                                                    {{-- <p class="text-success mt-3 fw-bold fs-5">Sudah dikembalikan</p> --}}
+                                                    <a href="/Readteracy/detail/buku/{{ $borrow->book_id }}" class="btn btn-primary btn-sm mt-3">Pinjam lagi</a>
+                                                @elseif ($borrow->tipe === 'Fisik')
+                                                    <button class="btn btn-sm btn-dark mt-3" name="return_book">Return book</button>
+                                                @endif
+                                            </form>
+                                        </div>
+                                        <hr>
+                                    @endforeach
                                     <span>click here to see more <a href="#">my libraries</a></span>
-                                </div>
                             </div>
                         </div>
                     </div>

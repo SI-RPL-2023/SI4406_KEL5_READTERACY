@@ -222,6 +222,66 @@
                             <div class="col-md-12">
                                 <div class="card mb-4 mb-md-0">
                                     <div class="card-body">
+                                        <p class="mb-4"><span class="text-primary font-italic me-1">Readteracy</span> Info
+                                        </p>
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="card mt-3 border shadow" style="width: 18rem;">
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <i class="fa-solid fa-book fa-4x mx-3 mt-3"></i>
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                            <div class="card-body">
+                                                                <h5 class="card-title">Total books</h5>
+                                                                <p class="card-text fw-bold">{{ $allBooks }}</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="card mt-3 border shadow" style="width: 18rem;">
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <i class="fa-solid fa-users fa-4x mx-3 mt-3"></i>
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                            <div class="card-body">
+                                                                <h5 class="card-title">Users</h5>
+                                                                <p class="card-text fw-bold">{{ $count_users }}</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="card mt-3 border shadow justify-content-center" style="width: 15rem;">
+                                                    <div class="row">
+                                                        <div class="col-md-3">
+                                                            <i class="fa-solid fa-layer-group fa-4x mx-3 mt-3"></i>
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <div class="card-body">
+                                                                <h5 class="card-title">Genre's</h5>
+                                                                <p class="card-text fw-bold">{{ $allGenres }}</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @endif
+
+                        @if (Auth::user()->role === 1)
+                        <div class="row" data-aos="fade-up">
+                            <div class="col-md-12">
+                                <div class="card mb-4 mb-md-0">
+                                    <div class="card-body">
                                         <p class="mb-4"><span class="text-primary font-italic me-1">Readteracy</span>
                                             Info
                                         </p>

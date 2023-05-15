@@ -1,3 +1,18 @@
+<!-- Modal Fisik -->
+    <link rel="stylesheet" href="/css/toastr.css">
+    <div class="modal fade" id="bukuFisik" tabindex="-1" aria-labelledby="ModalLabelFisik" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="ModalLabelFisik">{{ $detail_book->judul }}</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <img class="mt-3 img…
+
     <!-- Modal Fisik -->
     <link rel="stylesheet" href="/css/toastr.css">
     <div class="modal fade" id="bukuFisik" tabindex="-1" aria-labelledby="ModalLabelFisik" aria-hidden="true">

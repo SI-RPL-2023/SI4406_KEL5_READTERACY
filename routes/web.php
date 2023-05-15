@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\GenreController;
+use App\Http\Controllers\NavbarController;
 use App\Http\Controllers\CatalogueController;
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\HistoricalController;
@@ -17,13 +19,13 @@ use App\Http\Controllers\HistoricalController;
 |
 */
 
-Route::get('/', function () {
-    return view('homeGuest');
-});
+Route::get('/', [NavbarController::class, "all_genre_navbarGuest"])->middleware('guest');
+// Route::get('/', function () {
+//     return view('homeGuest');
+// });
 
-Route::get('/Readteracy/home', function () {
-    return view('home');
-});
+Route::get('/Readteracy/home', [NavbarController::class, "all_genre_navbarAuth"]);
+Route::get('/notification', [NavbarController::class, "notification"]);
 
 // Authentication Account
 Route::get('/account/auth/logout', [AuthController::class, "logout"]);
@@ -38,18 +40,23 @@ Route::get('/Readteracy/profile', [AuthController::class, "profile_page"]);
 Route::put('/Readteracy/account/update', [AuthController::class, "update_profile"]);
 Route::post('/Readteracy/account/{id}/profile-picture', [AuthController::class, "update_profilePic"]);
 Route::get('/Readteracy/account/{id}/delete/profile-picture', [AuthController::class, "delete_profilePic"]);
-Route::get('Readteracy/account/updateProfile', [AuthController::class, "update_profilePic2"])->name('updateProfilePicture');
+Route::get('Readteracy/account/updateProfile', [AuthController::class, "update_profilePic2"]);
+// Profile Petugas Genre
+Route::get('/Readteracy/genre/genreList', [GenreController::class, "genreList"]);
+Route::get('/Readteracy/addGenre/page', [GenreController::class, "addGenre_page"]);
+Route::post('/Readteracy/addGenre/store', [GenreController::class, "addGenre_store"]);
+Route::get('/Readteracy/editGenre/{slug}', [GenreController::class, "editGenre_page"]);
+Route::put('/Readteracy/editGenre/{slug}/store', [GenreController::class, "editGenre_store"]);
+Route::get('/Readteracy/delete/{slug}/genre', [GenreController::class, "delete_genre"]);
 
 // Catalogue
+Route::get('/Readteracy/detail/guest/{id}', [CatalogueController::class, "detailBook_page_guest"]);
+Route::get('/Readteracy/detail/{id}', [CatalogueController::class, "detailBook_page_userAuth"]);
 Route::get('/Readteracy/catalogue', [CatalogueController::class, "catalogue_page"]);
-
-// Genre Historical
-Route::get('/Readteracy/genre/Historical', [HistoricalController::class, "viewPage_historical"]);
-Route::get('/Readteracy/historical/addBook', [HistoricalController::class, "addBookHistorical_page"])->middleware('what_role');
-Route::post('/Readteracy/historical/addBook/store', [HistoricalController::class, "addBookHistorical_store"])->middleware('what_role');
-Route::get('/Readteracy/genre/Historical/{id}/delete', [HistoricalController::class, "destroy_book"])->middleware('what_role');
-
-// Genre Education
-Route::get('/Readteracy/genre/Education', [EducationController::class, "viewPage_education"]);
-Route::get('/Readteracy/education/addBook', [EducationController::class, "addBookEducation_page"])->middleware('what_role');
-Route::post('/Readteracy/education/addBook/store', [EducationController::class, "addBookEducation_store"])->middleware('what_role');
+Route::middleware('what_role')->group(function() {
+    Route::get('/Readteracy/catalogue/addBook', [CatalogueController::class, "addBook_page"]);
+    Route::post('/Readteracy/catalogue/addBook/store', [CatalogueController::class, "addBook_store"]);
+    Route::get('/Readteracy/editBook/{slug}', [CatalogueController::class, "editBook_page"]);
+    Route::put('/Readteracy/catalogue/editBook/{slug}/store', [CatalogueController::class, "editBook_store"]);
+    // Route::get('/Readteracy/delete-book/{slug}', [CatalogueController::class, "destroy"]);
+});

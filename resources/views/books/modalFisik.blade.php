@@ -12,7 +12,8 @@
                         <div class="row">
                             <div class="col-sm-4">
                                 <img class="mt-3 img…
-[09:16, 5/13/2023] Rofi: <!-- Modal Fisik -->
+
+    <!-- Modal Fisik -->
     <link rel="stylesheet" href="/css/toastr.css">
     <div class="modal fade" id="bukuFisik" tabindex="-1" aria-labelledby="ModalLabelFisik" aria-hidden="true">
         <div class="modal-dialog">
@@ -116,4 +117,14 @@
             toastr.success('Selamat membaca 🥰')
         @endif
 
+        // $('form').on('submit', function(e) {
+        //     var rent_date = $('input[name="rent_date"]').val();
+        //     if (!rent_date) {
+        //         e.preventDefault();
+        //         @if (Session::has('rent_date_null'))
+        //             toastr.success('Harap mengisi tanggal peminjaman buku')
+        //         @endif
+        //         $('span.error-message').css('display', 'block');
+        //     }
+        // });
     </script>

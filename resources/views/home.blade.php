@@ -68,6 +68,7 @@
     </head>
 
     <body class="bg-black text-white mt-0" data-bs-spy="scroll" data-bs-target="#navScroll">
+
         <main>
             <div class="position-absolute w-100 h-50 bg-black top-0 start-0"></div>
             <div class="position-relative py-vh-5 bg-cover bg-center"
@@ -142,7 +143,6 @@
                         </div>
                     </div>
                 </div>
-
             <div class="container">
                 <p class="mt-5">Most Wanted Book this Month</p>
             </div>
@@ -214,9 +214,10 @@
 
                     <div class="row gx-5">
                         <div class="col-12 col-md-6">
+
                             <div class="card bg-transparent mb-5" data-aos="zoom-in-up">
                                 <div class="bg-dark shadow rounded-5 p-0">
-                                    <img src="/img/buku4.png" width="582" height="327" alt="..."
+                                    <img src="/img/buku/" width="532" height="227" alt="..."
                                         class="img-fluid rounded-5 no-bottom-radius" loading="lazy">
                                     <div class="p-5">
                                         <h2 class="fw-lighter">Ipsum dolor est</h2>
@@ -228,60 +229,68 @@
                                 </div>
                             </div>
 
-                            <div class="card bg-transparent" data-aos="zoom-in-up">
-                                <div class="bg-dark shadow rounded-5 p-0">
-                                    <img src="/img/buku3.png" width="582" height="442" alt="..."
-                                        class="img-fluid rounded-5 no-bottom-radius" loading="lazy">
-                                    <div class="p-5">
-                                        <h2 class="fw-lighter">Ipsum dolor est</h2>
-                                        <p class="pb-4 text-secondary">Lorem ipsum dolor sit amet, consetetur sadipscing
-                                            elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-                                            erat.</p>
-                                        <a href="#" class="link-fancy link-fancy-light">Read more</a>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                         <div class="col-12 col-md-6">
                             <div class="p-5 pt-0 mt-5" data-aos="fade">
                                 <span class="h5 text-secondary fw-lighter">What we don´t know</span>
                                 <h2 class="display-4">There is a lot we don´t know. Here is a small sneak peek</h2>
                             </div>
-                            <div class="card bg-transparent mb-5 mt-5" data-aos="zoom-in-up">
-                                <div class="bg-dark shadow rounded-5 p-0">
-                                    <img src="/img/buku5.png" width="582" height="390" alt="..."
-                                        class="img-fluid rounded-5 no-bottom-radius" loading="lazy">
-                                    <div class="p-5">
-                                        <h2 class="fw-lighter">Ipsum dolor est</h2>
-                                        <p class="pb-4 text-secondary">
-                                            Lorem ipsum dolor sit amet, consetetur sadipscing
-                                            elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-                                            erat.</p>
-                                        <a href="#" class="link-fancy link-fancy-light">Read more</a>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div class="card bg-transparent" data-aos="zoom-in-up">
-                                <div class="bg-dark shadow rounded-5 p-0">
-                                    <img src="/img/buku5.png" width="582" height="327" alt="..."
-                                        class="img-fluid rounded-5 no-bottom-radius" loading="lazy">
-                                    <div class="p-5">
-                                        <h2 class="fw-lighter">Ipsum dolor est</h2>
-                                        <p class="pb-4 text-secondary">Lorem ipsum dolor sit amet, consetetur sadipscing
-                                            elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-                                            erat.</p>
-                                        <a href="#" class="link-fancy link-fancy-light">Read more</a>
+                                <div class="card bg-transparent mb-5 mt-5" data-aos="zoom-in-up">
+                                    <div class="bg-dark shadow rounded-5 p-0">
+                                        <img src="/img/buku/" width="582" height="390" alt="..."
+                                            class="img-fluid rounded-5 no-bottom-radius" loading="lazy">
+                                        <div class="p-5">
+                                            <h2 class="fw-lighter">Ipsum dolor est</h2>
+                                            <p class="pb-4 text-secondary">
+                                                Lorem ipsum dolor sit amet, consetetur sadipscing
+                                                elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+                                                erat.</p>
+                                            <a href="#" class="link-fancy link-fancy-light">Read more</a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+
                         </div>
                     </div>
 
                 </div>
 
             </div>
+
         </main>
+
+        @include('partials.footer')
+
+        <script src="/js/bootstrap.bundle.min.js"></script>
+        <script src="/js/aos.js"></script>
+        <script>
+            AOS.init({
+                duration: 800, // values from 0 to 3000, with step 50ms
+            });
+        </script>
+        <script>
+            let scrollpos = window.scrollY
+            const header = document.querySelector(".navbar")
+            const header_height = header.offsetHeight
+
+            const add_class_on_scroll = () => header.classList.add("scrolled", "shadow-sm")
+            const remove_class_on_scroll = () => header.classList.remove("scrolled", "shadow-sm")
+
+            window.addEventListener('scroll', function() {
+                scrollpos = window.scrollY;
+
+                if (scrollpos >= header_height) {
+                    add_class_on_scroll()
+                } else {
+                    remove_class_on_scroll()
+                }
+
+                console.log(scrollpos)
+            })
+        </script>
+
     </body>
 
+    </html>
 @endsection

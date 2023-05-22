@@ -77,16 +77,17 @@
                             <p>Order</p>
                             <span>></span>
                         </a>
-                        <a href="/account/auth/logout" class="sub-menu-link">
-                            <img src="/img/logout.png">
-                            <p>Logout</p>
-                            <span>></span>
-                        </a>
                         <a href="/Readteracy/profile" class="sub-menu-link">
                             <img src="/img/order.png">
                             <p>Profile</p>
                             <span>></span>
                         </a>
+                        <a href="/account/auth/logout" class="sub-menu-link">
+                            <img src="/img/logout.png">
+                            <p>Logout</p>
+                            <span>></span>
+                        </a>
+                        
                     </div>
                 </div>
             </div>

@@ -4,15 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\Auth;
 use App\Models\User;
+use App\Models\Genre;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use App\Models\BooksCatalogue;
+use App\Models\PeminjamanBuku;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
+use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Auth as AuthLogin;
-use Intervention\Image\Facades\Image;
 
 class AuthController extends Controller
 {
@@ -77,7 +80,15 @@ class AuthController extends Controller
 
     public function profile_page()
     {
-        return view('auth.profile');
+        $genre = Genre::all();
+        $user = auth()->user();
+        $peminjaman = PeminjamanBuku::where('user_id', '=', $user->id)->latest()->take(2)->get();
+        // $peminjaman = PeminjamanBuku::with('genreHistorical')->where('user_id', '=', $user->id)->latest()->get();
+
+        $allBooks = BooksCatalogue::count();
+        $allGenres = Genre::count();
+        $count_users = Auth::count();
+        return view('auth.profile', compact(['peminjaman', 'count_users', 'genre', 'allGenres', 'allBooks']));
     }
 
     public function update_profile( Request $request )

@@ -82,7 +82,7 @@
                                                         <?php
                                                             $sinopsis = $book["sinopsis"];
                                                             if (strlen($sinopsis) > 20) {
-                                                                $sinopsis = Str::substr($sinopsis, 0, 150) . '...';
+                                                                $sinopsis = Str::substr($sinopsis, 0, 120) . '...';
                                                                 echo $sinopsis;
                                                             };
                                                         ?>
@@ -94,20 +94,18 @@
                                                         </svg>
                                                     </div>
                                                 </div>
-                                                <div class="col-sm-2 mt-3 d-flex">
-                                                    @if (Auth::user()->role == 1 || Auth::user()->role == 2)
+                                                @if (Auth::user()->role == 1 || Auth::user()->role == 2)
+                                                    <div class="col-sm-2 mt-3 mx-3 d-flex">
                                                         <div class="mb-3">
-
-                                                            <a href="/Readteracy/editBook/{{ $book->slug }}" class="buttonGenre">Edit</a>
+                                                            <a href="/Readteracy/editBook/{{ $book->slug }}" class="buttonGenre btn btn-dark">Edit</a>
                                                         </div>
-                                                        <hr>
-                                                        <div class="mb-3">
-                                                            <a href="/Readteracy/delete-book/{{ $book->slug }}" class="buttonGenre">Hapus</a>
+                                                        <div class="mb-3 mx-5">
+                                                            <a href="/Readteracy/delete-book/{{ $book->slug }}" class="buttonGenre btn btn-dark">Hapus</a>
                                                         </div>
-                                                    @endif
-                                                </div>
+                                                    </div>
+                                                @endif
 
-                                                <div class="mx-3 mt-3">
+                                                <div class="mx-3">
                                                     @foreach ( $book->genre as $genre )
                                                         {{ $genre->nama_genre }}
                                                     @endforeach

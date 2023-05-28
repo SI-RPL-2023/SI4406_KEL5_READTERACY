@@ -41,21 +41,15 @@
                 </div>
                 <div class="row justify-content-center mx-3">
                     <div class="col-lg-7 col-md-7 col-sm-10 ">
-                        <?php
-                        // $isi_buku = $isi_buku['isi_buku'];
-                        // if (strlen($isi_buku) > 20) {
-                        //     $isi_buku = Str::substr($isi_buku, 0, 1000) . '...';
-                        //     echo $isi_buku;
-                        // }
-                        ?>
-                        <p class="mx-auto">{!! $isi_buku->isi_buku !!}</p>
+                        {{-- <p id="book-content" class="mx-auto" data-section="section-1">{!! substr($isi_buku->isi_buku, 0, 200) !!}...</p> --}}
+                        <span id="additional-content">{!! substr($isi_buku->isi_buku, 0, 200) !!}...</span>
                     </div>
                 </div>
                 <div class="row mt-3 mx-3">
-                    <div class="col-sm-2 col-lg-8 mx-auto">
-                        <a class="btn btn-dark text-light w-100">Baca bagian selanjutnya</a>
+                    <div class="col-sm-8 col-lg-8 mx-auto">
+                        <a href="{{ route('books.getNextPage', $isi_buku->id) }}" class="btn btn-dark text-light w-100" id="continue-btn">Baca bagian selanjutnya</a>
                     </div>
-                </div>
+                </div>
                 <div class="row mx-3">
                     <div id="disqus_thread"></div>
                     <script>
@@ -110,3 +104,28 @@
     </html>
     @endsection
 
+    <script>
+        $(document).ready(function () {
+            var startPosition = 201;
+
+            function loadNextPage() {
+                $.ajax({
+                    url: '{{ route('books.getNextPage', $isi_buku->id) }}',
+                    method: 'GET',
+                    data: { startPosition: startPosition },
+                    success: function (response) {
+                        $('#additional-content').append('<span>' + response.content + '</span>');
+                        startPosition += 200;
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                });
+            }
+
+            $('#continue-btn').on('click', function (e) {
+                e.preventDefault();
+                loadNextPage();
+            });
+        });
+    </script>

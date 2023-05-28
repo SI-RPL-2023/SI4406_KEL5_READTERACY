@@ -7,7 +7,9 @@
     <title>Readteracy - Sewa Buku</title>
     <link rel="stylesheet" href="/css/navbar.css">
     <link rel="stylesheet" href="/css/theme.min.css">
+    <link rel="stylesheet" href="/css/theme.css">
     <link rel="stylesheet" href="/css/dropdown.css">
+
 </head>
 <body>
     <header>
@@ -26,18 +28,26 @@
 
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0 list-group list-group-horizontal">
                     <li class="nav-item">
-                        <a class="nav-link" href="content.html">
+                        <a class="nav-link" href="/Readteracy/catalogue">
                             Catalogue
                         </a>
                     </li>
                     <li class="nav-item">
                         <div class="dropdown">
                             <input type="text" id="value" class="textBox" placeholder="Genre's">
-                            <div class="option">
-                                <div onclick="show('Historical')"><ion-icon name="planet"></ion-icon><a style="text-decoration: none;" class="text-white" href="/Readteracy/genre/Historical">Historical</a></div>
-                                <div onclick="show('Education')"><ion-icon name="book"></ion-icon><a style="text-decoration: none;" class="text-white" href="/Readteracy/genre/Education">Education</a></div>
-                                <div onclick="show('Romansa')"><ion-icon name="rose"></ion-icon><a style="text-decoration: none;" class="text-white" href="#">Romansa</a></div>
-                            </div>
+                            @if (Request::url() !== url('/Readteracy/genre/genreList'))
+                                <div class="option">
+                                    @foreach ( $genre as $items )
+                                        <div onclick="show('{{ $items->nama_genre }}')"><ion-icon name="book" class="text-white"></ion-icon> <a style="text-decoration: none;" class="text-white" href="/Readteracy/catalogue?genre={{ $items->slug }}">{{ $items->nama_genre }}</a></div>
+                                    @endforeach
+                                </div>
+                            @else
+                                <div class="option">
+                                    <div onclick="show('Historical')"><ion-icon name="planet"></ion-icon><a style="text-decoration: none;" class="text-white" href="/Readteracy/genre/Historical">Historical</a></div>
+                                    <div onclick="show('Education')"><ion-icon name="book"></ion-icon><a style="text-decoration: none;" class="text-white" href="/Readteracy/genre/Education">Education</a></div>
+                                    <div onclick="show('Romansa')"><ion-icon name="rose"></ion-icon><a style="text-decoration: none;" class="text-white" href="#">Romansa</a></div>
+                                </div>
+                            @endif
                         </div>
                     </li>
                     <li class="nav-item">
@@ -91,6 +101,7 @@
 <script src="/js/aos.js"></script>
 <script>
     AOS.init({
+        duration: 800, // values from 0 to 3000, with step 50ms
     });
 </script>
 <script>

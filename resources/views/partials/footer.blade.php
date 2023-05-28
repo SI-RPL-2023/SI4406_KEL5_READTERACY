@@ -29,29 +29,29 @@
                         <a href="#" class="link-fancy link-fancy-light">Action</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/Readteracy/genre/Historical" class="link-fancy link-fancy-light">Historical</a>
+                        <a href="/Readteracy/genre/Historical" class="link-fancy link-fancy-light">Sejarah</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="link-fancy link-fancy-light">Education</a>
+                        <a href="#" class="link-fancy link-fancy-light">Edukasi</a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="link-fancy link-fancy-light">Romansa</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="link-fancy link-fancy-light">All Categories</a>
+                        <a href="#" class="link-fancy link-fancy-light">Semua Kategori</a>
                     </li>
                 </ul>
             </div>
 
             <div class="col">
-                <span class="h6">Support</span>
+                <span class="h6">Bantuan</span>
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a href="#" class="link-fancy link-fancy-light">About us</a>
+                        <a href="#" class="link-fancy link-fancy-light">Tentang Kami</a>
                     </li>
 
                     <li class="nav-item">
-                        <a href="#" class="link-fancy link-fancy-light">Contact</a>
+                        <a href="#" class="link-fancy link-fancy-light">Kontak</a>
                     </li>
                 </ul>
             </div>

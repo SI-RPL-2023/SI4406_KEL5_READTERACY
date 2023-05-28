@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\NavbarController;
 use App\Http\Controllers\CatalogueController;
@@ -62,6 +63,9 @@ Route::middleware('what_role')->group(function() {
     Route::put('/Readteracy/catalogue/editBook/{slug}/store', [CatalogueController::class, "editBook_store"]);
     // Route::get('/Readteracy/delete-book/{slug}', [CatalogueController::class, "destroy"]);
 });
+
+// Like-Dislike Book
+Route::post('/Readteracy/like-dislike-book/{id}', [LikeController::class, "like_dislike"]);
 
 // Peminjaman Buku / history/libary
 Route::post('/Readteracy/borrow/{id}/non-fisik', [PeminjamanBukuController::class, "pinjam_buku_nonFisik"]);

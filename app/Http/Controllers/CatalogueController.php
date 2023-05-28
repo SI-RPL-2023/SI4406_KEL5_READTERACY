@@ -3,26 +3,27 @@
 namespace App\Http\Controllers;
 
 use App\Models\Genre;
+use App\Models\Likers;
 use Illuminate\Http\Request;
 use App\Models\BooksCatalogue;
-use App\Models\genreEducation;
 use App\Models\PeminjamanBuku;
-use App\Models\genreHistorical;
 
 class CatalogueController extends Controller
 {
     public function catalogue_page( Request $request )
     {
-
         $genre = Genre::all();
+        $books = BooksCatalogue::latest();
+        if ($request->search) {
+            $books->filter(['search' => $request->search]);
+        }
         if ($request->genre) {
             $books = BooksCatalogue::whereHas('genre', function($query) use($request) {
                 $query->where('genre.slug', $request->genre);
-            })->get();
-        } else {
-            $books = BooksCatalogue::latest()->get();
+            });
         }
-        return view('books.catalogue', compact(['books', 'genre']));
+        $books = $books->get();
+        return view('books.catalogue', compact(['genre', 'books']));
     }
 
 
@@ -42,7 +43,7 @@ class CatalogueController extends Controller
             $books -> image = $request -> file("image")->getClientOriginalName();
             $books -> save();
         }
-        return redirect('/Readteracy/catalogue');
+        return redirect('/Readteracy/catalogue')->with('addBook', 'Buku berhasil ditambah');
     }
 
     public function editBook_page( $slug )
@@ -65,7 +66,8 @@ class CatalogueController extends Controller
             $book_edit -> image = $request -> file("image")->getClientOriginalName();
             $book_edit -> save();
         }
-        return redirect('/Readteracy/catalogue');
+
+        return redirect('/Readteracy/catalogue')->with('editBook', 'Edit buku berhasil dilakukan');
     }
 
     public function destroy( $slug )
@@ -82,7 +84,9 @@ class CatalogueController extends Controller
         $detail_book = BooksCatalogue::find($id);
         $peminjamanBuku = PeminjamanBuku::where('user_id', $user->id)
         ->where('book_id', $detail_book->id)->orderByDesc('id')->first();
-        return view('books.detailBook', compact(['detail_book', 'peminjamanBuku', 'genre']));
+        $like = $detail_book->likers()->count();
+        $dislike = $detail_book->dislikers()->count();
+        return view('books.detailBook', compact(['detail_book', 'peminjamanBuku', 'genre', 'like', 'dislike']));
     }
 
     public function detailBook_page_guest( $id )
@@ -94,22 +98,41 @@ class CatalogueController extends Controller
     }
 
     public function baca_buku( $id, Request $request )
-    {   $genre = Genre::all();
-        // $isi_buku = BooksCatalogue::where('slug', $slug)->first();
-        $isi_buku = PeminjamanBuku::find($id);
+    {
+        $genre = Genre::all();
 
-        return view('books.isiBuku', compact(['isi_buku', 'genre']));
+        $isi_buku = BooksCatalogue::find($id);
+        $genre_related = $isi_buku->genre()->get();
+        $related_books = BooksCatalogue::whereHas('genre', function($query) use ($genre_related) {
+            $query->whereIn('genre.id', $genre_related->pluck('id'));
+        })
+        ->where('books_catalogue.id', '!=', $isi_buku->id)
+        ->get();
+
+        return view('books.isiBuku', compact(['isi_buku', 'genre', 'related_books']));
     }
+
+    public function getNextPage($id, Request $request)
+    {
+        $isi_buku = BooksCatalogue::find($id);
+        $content = $isi_buku->isi_buku;
+        $perPage = 200; // Ubah sesuai kebutuhan Anda
+        $startPosition = $request->query('startPosition', 0);
+        $nextContent = substr($content, $startPosition, $perPage);
+
+        return response()->json([
+            'content' => $nextContent,
+        ]);
+    }
+
 
     public function detailBook_page_after_return( $id )
     {
         $genre = Genre::all();
-
         $user = auth()->user();
         $detail_book = BooksCatalogue::find($id);
         $peminjamanBuku = PeminjamanBuku::where('user_id', $user->id)
         ->where('book_id', $detail_book->id)->orderByDesc('id')->first();
-        return view('books.detailBook', compact(['detail_book', 'peminjamanBuku', 'genre']));
-
+        return view('books.detailBook', compact(['detail_book', 'peminjamanBuku', 'genre', 'like', 'dislike']));
     }
 }

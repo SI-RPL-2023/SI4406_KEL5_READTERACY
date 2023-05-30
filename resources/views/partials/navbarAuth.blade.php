@@ -34,7 +34,7 @@
                     </li>
                     <li class="nav-item">
                         <div class="dropdown">
-                            <input type="text" id="value" class="textBox" placeholder="Genre's">
+                            <input type="text" id="value" class="textBox" placeholder="Genre's" autocomplete="off">
                             @if (Request::url() !== url('/Readteracy/genre/genreList'))
                                 <div class="option">
                                     @foreach ( $genre as $items )
@@ -87,7 +87,7 @@
                             <p>Logout</p>
                             <span>></span>
                         </a>
-                        
+
                     </div>
                 </div>
             </div>

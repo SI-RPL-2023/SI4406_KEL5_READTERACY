@@ -32,7 +32,7 @@
                     </li>
                     <li class="nav-item">
                         <div class="dropdown">
-                            <input type="text" id="value" class="textBox" placeholder="Genre's">
+                            <input type="text" id="value" class="textBox" placeholder="Genre's" autocomplete="off">
                             @if (Request::url() !== url('/Readteracy/genre/genreList'))
                                 <div class="option">
                                     @foreach ( $genre as $items )
@@ -96,6 +96,17 @@
     AOS.init({
         duration: 800,
     });
+</script>
+<script>
+    function show(items) {
+        document.querySelector('.textBox').value = items;
+        document.getElementById('value').style.color = 'white';
+    }
+
+    var dropdown = document.querySelector('.dropdown');
+    dropdown.onclick = function() {
+        dropdown.classList.toggle('active');
+    }
 </script>
 
 <script src="/js/navbar.js"></script>

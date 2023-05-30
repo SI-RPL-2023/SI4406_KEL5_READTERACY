@@ -50,6 +50,10 @@ Route::post('/Readteracy/addGenre/store', [GenreController::class, "addGenre_sto
 Route::get('/Readteracy/editGenre/{slug}', [GenreController::class, "editGenre_page"]);
 Route::put('/Readteracy/editGenre/{slug}/store', [GenreController::class, "editGenre_store"]);
 Route::get('/Readteracy/delete/{slug}/genre', [GenreController::class, "delete_genre"]);
+// Profile Admin all users
+Route::get('/Readteracy/admin/all-users', [UsersController::class, "listUser_page"]);
+Route::get('/Readteracy/see-profile/{id}', [UsersController::class, "profileUser_page"]);
+Route::put('/Readteracy/admin/update/member/{id}', [UsersController::class, "update_profileMember"]);
 
 // Catalogue
 Route::get('/Readteracy/catalogue', [CatalogueController::class, "catalogue_page"]);

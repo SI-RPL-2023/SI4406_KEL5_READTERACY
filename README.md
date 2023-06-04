@@ -9,9 +9,9 @@
 
 ## About Laravel
 
-| Attempt | #1    | #2    |
-| :---:   | :---: | :---: |
-| Seconds | 301   | 283   |
+| Nama | NIM    |
+| :---:   | :---: |
+| Ahmad Sidik Rofiudin | 1202204108   |
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 

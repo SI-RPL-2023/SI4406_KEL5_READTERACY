@@ -10,6 +10,7 @@
 ## About Laravel
 
 | Nama | NIM    |
+:---::---::---:
 | Ahmad Sidik Rofiudin | 1202204108   |
 | Kumara Ris Panji | 120220.... |
 

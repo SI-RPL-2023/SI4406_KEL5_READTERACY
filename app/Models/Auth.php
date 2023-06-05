@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Comment;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Auth extends Model
 {
     use HasFactory;
-    protected $table="users";
-    protected $guarded=[];
+    protected $table = "users";
+    protected $guarded = [];
 }

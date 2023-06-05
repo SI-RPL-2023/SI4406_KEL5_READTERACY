@@ -10,10 +10,11 @@
     <link rel="icon" type="image/png" sizes="96x96" href="img/favicon.png">
     <title>Login For Readteracy</title>
     <link rel="stylesheet" href="/css/theme.min.css">
+    <link rel="stylesheet" href="/css/toastrAuth.css">
     <style>
         .bg {
-            background-image: url('/img/auth2.jpg');
-            background-position: center;
+            background-image: url('/img/login.jpg');
+            background-position: 0rem 0rem;
             background-repeat: no-repeat;
             background-size: cover;
         }
@@ -42,11 +43,11 @@
 
                 </header>
                 <main class="mb-auto col-12">
-                    <h1>Masuk dan mulai baca</h1>
+                    <h1>Masuk dan mulai sewa</h1>
                     <form class="row" method="post" action="/account/login/store">
                         @csrf
                         <div class="col-12">
-                            <div class="mb-2">
+                            <div class="mb-3">
                                 <label for="email" class="form-label">Email address</label>
                                 <input type="email" class="form-control form-control-lg bg-gray-800 border-dark"
                                     id="email" aria-describedby="emailHelp" name="email">
@@ -82,7 +83,7 @@
                                     <strong>Remember Me</strong>
                                 </label>
                             </div>
-                            <button type="submit" class="btn btn-white btn-xl mb-3">Login!</button>
+                            <button type="submit" class="btn btn-white btn-xl mb-3">Masuk!</button>
                             <p>Don't have account? <a href="/account/register" style="text-decoration: none;"> Get Here</a></p>
                         </div>
                     </form>
@@ -90,12 +91,25 @@
                 </main>
             </div>
 
+            {{-- <div class="col-12 col-md-5 col-lg-6 col-xl-7 gradient">
 
+            </div> --}}
             <div class="bg col-12 col-md-5 col-lg-6 col-xl-7">
             </div>
         </div>
 
     </div>
 </body>
-
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+    integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/js/toastAuth.js"></script>
+    <script>
+        @if (Session::has('wrongAuth'))
+            toastr.error('Upss..email atau password kamu ada yang ga bener nih😐')
+        @endif
+    </script>
 </html>

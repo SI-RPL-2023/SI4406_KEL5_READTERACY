@@ -49,6 +49,10 @@ Route::post('/Readteracy/addGenre/store', [GenreController::class, "addGenre_sto
 Route::get('/Readteracy/editGenre/{slug}', [GenreController::class, "editGenre_page"]);
 Route::put('/Readteracy/editGenre/{slug}/store', [GenreController::class, "editGenre_store"]);
 Route::get('/Readteracy/delete/{slug}/genre', [GenreController::class, "delete_genre"]);
+// Profile Admin all users
+Route::get('/Readteracy/admin/all-users', [UsersController::class, "listUser_page"]);
+Route::get('/Readteracy/see-profile/{id}', [UsersController::class, "profileUser_page"]);
+Route::put('/Readteracy/admin/update/member/{id}', [UsersController::class, "update_profileMember"]);
 
 // Catalogue
 Route::get('/Readteracy/catalogue', [CatalogueController::class, "catalogue_page"]);
@@ -64,9 +68,11 @@ Route::middleware('what_role')->group(function() {
 });
 
 // Peminjaman Buku / history/libary
+Route::get('/Readteracy/history/borrowed', [PeminjamanBukuController::class, "viewPage_historyPeminjaman"]);
 Route::post('/Readteracy/borrow/{id}/non-fisik', [PeminjamanBukuController::class, "pinjam_buku_nonFisik"]);
 Route::post('/Readteracy/borrow/{id}/fisik', [PeminjamanBukuController::class, "pinjam_buku_fisik"])->name("pinjamBukuFisik");
 Route::post('/Readteracy/return-book', [PeminjamanBukuController::class, "return_book"]);
+
 // Data Buku (Petugas buku)
 Route::get('/Readteracy/data-peminjaman', [PeminjamanBukuController::class, "viewPage_dataPeminjaman"])->middleware('what_role');
 Route::put('/Readteracy/{id}/ubah-status/data-peminjaman', [PeminjamanBukuController::class, "ubah_status"]);

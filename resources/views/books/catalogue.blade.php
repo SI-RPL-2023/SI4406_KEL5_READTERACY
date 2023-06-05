@@ -114,7 +114,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="cover bg" style="background-image: url(/img/buku/{{ $book->image }})">
+                                <div class="cover bg" style="background-image: url(/img/buku/buku4.jpg)">
+                                    {{-- <img src="/img/buku/{{$book->image}}" alt=""> --}}
                                 </div>
                             </div>
                         </div>

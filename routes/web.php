@@ -75,3 +75,5 @@ Route::post('/Readteracy/return-book', [PeminjamanBukuController::class, "return
 // Data Buku (Petugas buku)
 Route::get('/Readteracy/data-peminjaman', [PeminjamanBukuController::class, "viewPage_dataPeminjaman"])->middleware('what_role');
 Route::put('/Readteracy/{id}/ubah-status/data-peminjaman', [PeminjamanBukuController::class, "ubah_status"]);
+
+Route::get('/Readteracy/about-us', [NavbarController::class, "viewPage_about"]);

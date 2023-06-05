@@ -7,6 +7,7 @@ use App\Http\Controllers\GenreController;
 use App\Http\Controllers\NavbarController;
 use App\Http\Controllers\CatalogueController;
 use App\Http\Controllers\PeminjamanBukuController;
+use App\Http\Controllers\UsersController;
 
 /*
 |--------------------------------------------------------------------------

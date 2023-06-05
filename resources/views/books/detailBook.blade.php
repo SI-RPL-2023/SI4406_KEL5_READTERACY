@@ -36,7 +36,7 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-8 col-md-5 col-sm-10">
-                                <div class="white-box text-center mx-3"><img src="/img/buku/{{ $detail_book->image }}" width="430px" height="600px" class="img-responsive rounded-5" alt=""></div>
+                                <div class="white-box text-center mx-3"><img src="/img/buku/{{ $detail_book->image }}" class="img rounded-5 w-100" alt=""></div>
                             </div>
                             <div class="col-xl-7 col-sm-10">
                                 <h4 class="box-title mt-5 mx-3">Sinopsis</h4>
@@ -85,9 +85,8 @@
                                     @endif
                                 </form>
 
-                                {{-- $detail_book->status == "in stock" && auth()->check() && auth()->user()->peminjamanBuku()->where('book_id', $detail_book->id)->exists() --}}
                                 @if ($peminjamanBuku && $peminjamanBuku->status == "sedang dipinjam")
-                                    <a href="/Readteracy/baca-buku/{{ $detail_book->id }}" class="btn btn-dark mt-3 mx-3">Ready to read</a>
+                                    <a href="/Readteracy/baca-buku/{{ $detail_book->id }}" class="btn bg-dark text-light mt-3 mx-3">Ready to read</a>
                                 @elseif ($detail_book->status == "in stock")
                                     <button class="btn bg-dark text-white dropdown-toggle mt-3 mx-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         Want to read
@@ -119,9 +118,21 @@
                                         </div>
                                         <li><i class="fa fa-check text-success"></i>Pengembalian : Tidak ada</li>
                                     @else
-                                        <div class="rounded-3 border bg-success text-light px-2 py-1 col-sm-6 col-lg-6 {{ $peminjamanBuku->actual_return_date === NULL ? '' :
+                                        @if ($peminjamanBuku->status === "in stock")
+                                            <div class="col-sm-11">
+                                                <p class="alert bg-info text-dark">
+                                                    <span>Tng, secepatnya petugas akan memberi akses buat baca buku mu. Harap bersabar yaa readers🤯</span>
+                                                </p>
+                                            </div>
+                                        @endif
+                                        <div class="rounded-3 border bg-success text-light px-2 py-1 col-sm-8 col-lg-5 {{ $peminjamanBuku->actual_return_date === NULL ? '' :
                                         ($peminjamanBuku->return_date < $peminjamanBuku->actual_return_date ? 'bg-danger text-light' : 'bg-success text-light') }}">
-                                            <li><i class="fa fa-check"></i>Status : {{ $peminjamanBuku->status }}</li>
+                                        <li><i class="fa fa-check"></i>Status : {{ $peminjamanBuku->status }}</li>
+                                            {{-- @if ($peminjamanBuku->status === "in stock")
+                                                <li><i class="fa fa-check"></i>Status : Menuggu persetujuan</li>
+                                            @else
+                                                <li><i class="fa fa-check"></i>Status : {{ $peminjamanBuku->status }}</li>
+                                            @endif --}}
                                         </div>
                                         <li><i class="fa fa-check text-success"></i>Deadline : {{ $peminjamanBuku->return_date }}</li>
                                     @endif
@@ -250,9 +261,8 @@
                         </h6>
                     </div>
                     <div class="row">
-                        <div class="col-lg-5 col-md-5 col-sm-10">
-                            <div class="white-box text-center mx-3"><img src="/img/buku/{{ $detail_book->image }}" width="430px" height="600px"
-                                class="img-responsive rounded-5" alt=""></div>
+                        <div class="col-lg-8 col-md-5 col-sm-10">
+                            <div class="white-box text-center mx-3"><img src="/img/buku/{{ $detail_book->image }}" class="img rounded-5 w-100" alt=""></div>
                         </div>
                         <div class="col-xl-7 col-sm-10">
                             <h4 class="box-title mt-5 mx-3">Sinopsis</h4>

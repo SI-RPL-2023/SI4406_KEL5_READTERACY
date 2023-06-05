@@ -106,6 +106,26 @@
                 </div>
             </div>
             <div class="row mt-3" >
+                <div class="col mb-5" data-aos="fade-down">
+                    <article class="card"
+                    style="background-image: url('/img/m.jpg');
+                    background-position: 0px -5em;
+                    background-repeat: no-repeat;
+                    background-size: cover;">
+                        <div class="temporary_text">
+                            Project Manager
+                        </div>
+                        <div class="card_content">
+                            <span class="card_title">Muhammad Ikhlasul Amalsyah Isa</span>
+                                <span class="card_subtitle">Project Manager - 1202200368</span>
+                                <p class="card_description">
+                                    Project Manager bertanggung jawab atas keberlangsungan proyek
+                                    Readteracy Secara keseluruhan dan memainkan peran dalam pengorganisasian, dan pengendalian
+                                    setiap aspek proyek,hingga pengawasan tim.
+                                </p>
+                        </div>
+                    </article>
+                </div>
                 <div class="col mb-5" data-aos="fade-up">
                     <article class="card"
                     style="background-image: url('/img/rofi.jpg');
@@ -126,7 +146,29 @@
                         </div>
                     </article>
                 </div>
+
                 <div class="col mb-5" data-aos="fade-down">
+                    <article class="card"
+                    style="background-image: url('/img/bli.jpeg');
+                    background-position: 0px -5em;
+                    background-repeat: no-repeat;
+                    background-size: cover;">
+                        <div class="temporary_text">
+                            Programmer-2
+                        </div>
+                        <div class="card_content">
+                            <span class="card_title">I Kadek Wisnu Kusuma Wardana</span>
+                                <span class="card_subtitle">Programmer 2 - 1202200081</span>
+                                <p class="card_description">
+                                    Dalam mengembangkan website Readteracy saya membantu mengembangkan website ini
+                                    menggunakan framework Laravel. Semoga kedepannya rakyat mampu
+                                    meluangkan waktu untuk membaca buku
+                                </p>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col mb-5" data-aos="fade-up">
                     <article class="card"
                     style="background-image: url('/img/najem.jpg');
                     background-position: 0px -5em;
@@ -146,45 +188,7 @@
                         </div>
                     </article>
                 </div>
-                <div class="col mb-5" data-aos="fade-down">
-                    <article class="card"
-                    style="background-image: url('/img/bli.jpeg');
-                    background-position: 0px -5em;
-                    background-repeat: no-repeat;
-                    background-size: cover;">
-                        <div class="temporary_text">
-                            Programmer 2
-                        </div>
-                        <div class="card_content">
-                            <span class="card_title">I Kadek Wisnu Kusuma Wardana</span>
-                                <span class="card_subtitle">Programmer 2 - 1202200081</span>
-                                <p class="card_description">
-                                    Dalam mengembangkan website Readteracy saya membantu mengembangkan website ini
-                                    menggunakan framework Laravel. Semoga kedepannya rakyat mampu
-                                    meluangkan waktu untuk membaca buku
-                                </p>
-                        </div>
-                    </article>
-                </div>
-                <div class="col mb-5" data-aos="fade-down">
-                    <article class="card"
-                    style="background-image: url('/img/m.jpg');
-                    background-position: 0px -5em;
-                    background-repeat: no-repeat;
-                    background-size: cover;">
-                        <div class="temporary_text">
-                            Project Manager
-                        </div>
-                        <div class="card_content">
-                            <span class="card_title">Muhammad Ikhlasul Amalsyah Isa</span>
-                                <span class="card_subtitle">Project Manager - 1202200368</span>
-                                <p class="card_description">
-                                    Project Manager bertanggung jawab atas keberlangsungan proyek
-                                    Readteracy Secara keseluruhan dan memegang kendali penuh
-                                </p>
-                        </div>
-                    </article>
-                </div>
+
                 <div class="col mb-5" data-aos="fade-down">
                     <article class="card"
                     style="background-image: url('/img/rafsan.jpg');
@@ -205,7 +209,7 @@
                         </div>
                     </article>
                 </div>
-                <div class="col mb-5" data-aos="fade-down">
+                <div class="col mb-5" data-aos="fade-up">
                     <article class="card"
                     style="background-image: url('/img/cum.jpg');
                     background-position: 0px -5em;
@@ -219,6 +223,8 @@
                                 <span class="card_subtitle">Ahli Gambar - 1202204231</span>
                                 <p class="card_description">
                                     Bertanggung jawab atas tampilan website Readteracy
+                                    dan memiliki pandangan yang unik dan mampu mengubah ide-ide menjadi
+                                    desain yang menarik dan berfungsional.
                                 </p>
                         </div>
                     </article>

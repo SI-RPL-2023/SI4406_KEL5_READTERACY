@@ -31,13 +31,40 @@
                     <h1 class="mt-5 text-center text-dark">Data Peminjam Buku</h1>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-lg-1 badge mt-3 bg-info ms-5">
+                  <span class="badge text-bg-info">
+                    <h5 class="mt-2 me-4">
+                        <i class="bi bi-journal-code"></i> {{ $count_inStock }}
+                    </h5>
+                  </span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-1 badge mt-3 bg-warning ms-5">
+                  <span class="badge text-bg-warning">
+                    <h5 class="mt-2 me-4">
+                        <i class="bi bi-book-half"></i> {{ $count_sedangDipinjam }}
+                    </h5>
+                  </span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-1 badge mt-3 bg-success ms-5">
+                  <span class="badge text-bg-success">
+                    <h5 class="mt-2 me-4">
+                        <i class="bi bi-bookmark-check-fill"></i> {{ $count_dikembalikan }}
+                    </h5>
+                  </span>
+                </div>
+            </div>
         </div>
         <section>
             <div class="container mt-5 dataTables_wrapper">
                 <table id="dataPeminjaman" class="display nowrap" style="width:100%">
                     <thead>
                         <tr>
-                            {{-- <th>No</th> --}}
                             <th>Nama Peminjam</th>
                             <th>Judul</th>
                             <th>No Hp</th>
@@ -46,14 +73,26 @@
                             <th>Actual Return</th>
                             <th>Tipe</th>
                             <th>Status</th>
+                            @if (Auth::user()->role === 2)
                             <th>Action</th>
+                            @endif
                         </tr>
                     </thead>
                     <tbody>
+                        @if (Auth::user()->role === 2)
+                            @if (isset($notify) && $notify->status === "in stock")
+                            <div class="col-sm-5 fw-bold">
+                                <p class="alert bg-warning text-light">
+                                    <span>Ada {{ $count_inStock }} peminjam yang lagi nunggu konfirmasimu</span>
+                                </p>
+                            </div>
+                            @endif
+                        @endif
                         @foreach ( $borrowedBooks as $borrowedBook )
                             @foreach ( $siPeminjam as $peminjam )
                                 @if ( $peminjam->id === $borrowedBook->user_id )
-                                    <tr>
+                                    <tr class="{{ $borrowedBook->actual_return_date === NULL ? '' :
+                                    ($borrowedBook->return_date < $borrowedBook->actual_return_date ? 'bg-danger text-light' : 'bg-success text-light') }}">
                                         <td>{{ $peminjam->name }}</td>
                                         <td>{{ $borrowedBook->judul }}</td>
                                         <td>{{ $peminjam->no_hp }}</td>
@@ -62,6 +101,7 @@
                                         <td>{{ $borrowedBook->actual_return_date }}</td>
                                         <td>{{ $borrowedBook->tipe }}</td>
                                         <td>{{ $borrowedBook->status }}</td>
+                                        @if (Auth::user()->role === 2)
                                         <td>
                                             <form action="/Readteracy/{{ $borrowedBook->id }}/ubah-status/data-peminjaman" method="post">
                                                 @method('put')
@@ -72,14 +112,14 @@
                                                         <option @if ( $borrowedBook->status === "sedang dipinjam") selected @endif value="sedang dipinjam">sedang dipinjam</option>
                                                         <option @if ( $borrowedBook->status === "dikembalikan") selected @endif value="dikembalikan">dikembalikan</option>
                                                     </select>
-
-                                                    <button class="btn btn-lg btn-dark">Konfirmasi</button>
+                                                    <button class="btn btn-dark">Konfirmasi</button>
                                                 </div>
                                                 <div class="mt-3">
 
                                                 </div>
                                             </form>
                                         </td>
+                                        @endif
                                     </tr>
                                 @endif
                             @endforeach

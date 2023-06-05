@@ -107,7 +107,11 @@
             </div>
             <div class="row mt-3" >
                 <div class="col mb-5" data-aos="fade-up">
-                    <article class="card">
+                    <article class="card"
+                    style="background-image: url('/img/rofi.jpg');
+                    background-position: 0px -2em;
+                    background-repeat: no-repeat;
+                    background-size: cover;">
                         <div class="temporary_text">
                             Programmer-1
                         </div>
@@ -123,17 +127,98 @@
                     </article>
                 </div>
                 <div class="col mb-5" data-aos="fade-down">
-                    <article class="card">
-                        <div class="temporary_text">
-                            Programmer-1
+                    <article class="card"
+                    style="background-image: url('/img/najem.jpg');
+                    background-position: 0px -5em;
+                    background-repeat: no-repeat;
+                    background-size: cover;">
+                        <div class="temporary_text text-dark">
+                            Analyst
                         </div>
                         <div class="card_content">
-                            <span class="card_title">Ahmad Sidik Rofiudin</span>
-                                <span class="card_subtitle">Programmer - 1202204108</span>
+                            <span class="card_title">Najma Syarifah</span>
+                                <span class="card_subtitle">Analyst - 1202200141</span>
+                                <p class="card_description">
+                                    Saya membantu menganilis kebutuhan fungsional maupun
+                                    non-fungsional sistem serta memastikan kualitas sistem yang dibuat
+                                    agar sesuai dengan kebutuhan user dan tujuan organisasi
+                                </p>
+                        </div>
+                    </article>
+                </div>
+                <div class="col mb-5" data-aos="fade-down">
+                    <article class="card"
+                    style="background-image: url('/img/bli.jpeg');
+                    background-position: 0px -5em;
+                    background-repeat: no-repeat;
+                    background-size: cover;">
+                        <div class="temporary_text">
+                            Programmer 2
+                        </div>
+                        <div class="card_content">
+                            <span class="card_title">I Kadek Wisnu Kusuma Wardana</span>
+                                <span class="card_subtitle">Programmer 2 - 1202200081</span>
                                 <p class="card_description">
                                     Dalam mengembangkan website Readteracy saya membantu mengembangkan website ini
                                     menggunakan framework Laravel. Semoga kedepannya rakyat mampu
                                     meluangkan waktu untuk membaca buku
+                                </p>
+                        </div>
+                    </article>
+                </div>
+                <div class="col mb-5" data-aos="fade-down">
+                    <article class="card"
+                    style="background-image: url('/img/m.jpg');
+                    background-position: 0px -5em;
+                    background-repeat: no-repeat;
+                    background-size: cover;">
+                        <div class="temporary_text">
+                            Project Manager
+                        </div>
+                        <div class="card_content">
+                            <span class="card_title">Muhammad Ikhlasul Amalsyah Isa</span>
+                                <span class="card_subtitle">Project Manager - 1202200368</span>
+                                <p class="card_description">
+                                    Project Manager bertanggung jawab atas keberlangsungan proyek
+                                    Readteracy Secara keseluruhan dan memegang kendali penuh
+                                </p>
+                        </div>
+                    </article>
+                </div>
+                <div class="col mb-5" data-aos="fade-down">
+                    <article class="card"
+                    style="background-image: url('/img/rafsan.jpg');
+                    background-position: 0px -5em;
+                    background-repeat: no-repeat;
+                    background-size: cover;">
+                        <div class="temporary_text">
+                            Analyst-2
+                        </div>
+                        <div class="card_content">
+                            <span class="card_title">Muhammad Rizki Rafsyandjani</span>
+                                <span class="card_subtitle">Analyst-2 - 1202202291</span>
+                                <p class="card_description">
+                                    Saya membantu menganilis kebutuhan fungsional maupun
+                                    non-fungsional sistem serta memastikan kualitas sistem yang dibuat
+                                    agar sesuai dengan kebutuhan user dan tujuan organisasi
+                                </p>
+                        </div>
+                    </article>
+                </div>
+                <div class="col mb-5" data-aos="fade-down">
+                    <article class="card"
+                    style="background-image: url('/img/cum.jpg');
+                    background-position: 0px -5em;
+                    background-repeat: no-repeat;
+                    background-size: cover;">
+                        <div class="temporary_text">
+                            Ahli Gambar
+                        </div>
+                        <div class="card_content">
+                            <span class="card_title">Kumara Ris Panji Bagaskara</span>
+                                <span class="card_subtitle">Ahli Gambar - 1202204231</span>
+                                <p class="card_description">
+                                    Bertanggung jawab atas tampilan website Readteracy
                                 </p>
                         </div>
                     </article>

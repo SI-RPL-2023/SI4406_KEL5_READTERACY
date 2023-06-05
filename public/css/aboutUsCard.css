@@ -6,7 +6,7 @@
     background: #131313;
     overflow: hidden;
     border-radius: 20px;
-    background-image: url('/img/rofi.jpg');
+    /* background-image: url('/img/rofi.jpg'); */
     background-position: 0px -3em;
     background-repeat: no-repeat;
     background-size: cover;

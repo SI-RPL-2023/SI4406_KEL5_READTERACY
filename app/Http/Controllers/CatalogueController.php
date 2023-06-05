@@ -79,7 +79,6 @@ class CatalogueController extends Controller
     public function detailBook_page_userAuth( $id )
     {
         $genre = Genre::all();
-
         $user = auth()->user();
         $detail_book = BooksCatalogue::find($id);
         $peminjamanBuku = PeminjamanBuku::where('user_id', $user->id)

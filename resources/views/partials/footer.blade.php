@@ -26,9 +26,16 @@
                 <span class="h6">Genre's</span>
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        @foreach ( $genre as $item )
-                            <a href="/Readteracy/catalogue?genre={{ $item->slug }}" class="link-fancy link-fancy-light">{{ $item->nama_genre }}</a>
-                        @endforeach
+                        <a href="#" class="link-fancy link-fancy-light">Action</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/Readteracy/genre/Historical" class="link-fancy link-fancy-light">Sejarah</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="link-fancy link-fancy-light">Edukasi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="link-fancy link-fancy-light">Romansa</a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="link-fancy link-fancy-light">Semua Kategori</a>

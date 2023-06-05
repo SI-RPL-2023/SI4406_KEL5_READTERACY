@@ -6,8 +6,6 @@ use App\Http\Controllers\LikeController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\NavbarController;
 use App\Http\Controllers\CatalogueController;
-use App\Http\Controllers\EducationController;
-use App\Http\Controllers\HistoricalController;
 use App\Http\Controllers\PeminjamanBukuController;
 
 /*

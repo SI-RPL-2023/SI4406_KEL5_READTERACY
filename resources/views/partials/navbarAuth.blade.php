@@ -72,19 +72,19 @@
                             <p>Ubah Password</p>
                             <span>></span>
                         </a>
-                        <a href="/account/login-page" class="sub-menu-link">
+                        <a href="#" class="sub-menu-link">
                             <img src="/img/order.png">
-                            <p>Order</p>
-                            <span>></span>
-                        </a>
-                        <a href="/Readteracy/profile" class="sub-menu-link">
-                            <img src="/img/order.png">
-                            <p>Profile</p>
+                            <p>Riwayat</p>
                             <span>></span>
                         </a>
                         <a href="/account/auth/logout" class="sub-menu-link">
                             <img src="/img/logout.png">
                             <p>Logout</p>
+                            <span>></span>
+                        </a>
+                        <a href="/Readteracy/profile" class="sub-menu-link">
+                            <img src="/img/order.png">
+                            <p>Profile</p>
                             <span>></span>
                         </a>
 

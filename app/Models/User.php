@@ -3,14 +3,29 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+
+    public function peminjamanBuku()
+    {
+        return $this->hasMany(PeminjamanBuku::class);
+    }
+
+    public function likers(): BelongsToMany
+    {
+        return $this->belongsToMany(BooksCatalogue::class, 'book_user_likes', 'user_id', 'book_id')->withTimestamps();
+    }
+    public function dislikers(): BelongsToMany
+    {
+        return $this->belongsToMany(BooksCatalogue::class, 'book_user_dislikes', 'user_id', 'book_id')->withTimestamps();
+    }
 
     /**
      * The attributes that are mass assignable.

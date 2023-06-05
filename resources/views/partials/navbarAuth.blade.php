@@ -34,7 +34,7 @@
                     </li>
                     <li class="nav-item">
                         <div class="dropdown">
-                            <input type="text" id="value" class="textBox" placeholder="Genre's">
+                            <input type="text" id="value" class="textBox" placeholder="Genre's" autocomplete="off">
                             @if (Request::url() !== url('/Readteracy/genre/genreList'))
                                 <div class="option">
                                     @foreach ( $genre as $items )
@@ -72,14 +72,9 @@
                             <p>Ubah Password</p>
                             <span>></span>
                         </a>
-                        <a href="/account/login-page" class="sub-menu-link">
+                        <a href="#" class="sub-menu-link">
                             <img src="/img/order.png">
-                            <p>Order</p>
-                            <span>></span>
-                        </a>
-                        <a href="/Readteracy/profile" class="sub-menu-link">
-                            <img src="/img/order.png">
-                            <p>Profile</p>
+                            <p>Riwayat</p>
                             <span>></span>
                         </a>
                         <a href="/account/auth/logout" class="sub-menu-link">
@@ -87,7 +82,12 @@
                             <p>Logout</p>
                             <span>></span>
                         </a>
-                        
+                        <a href="/Readteracy/profile" class="sub-menu-link">
+                            <img src="/img/order.png">
+                            <p>Profile</p>
+                            <span>></span>
+                        </a>
+
                     </div>
                 </div>
             </div>

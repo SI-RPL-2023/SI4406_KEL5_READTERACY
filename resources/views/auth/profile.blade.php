@@ -71,8 +71,7 @@
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="card mb-4" data-aos="zoom-in-right">
-                            <form action="/Readteracy/account/{{ Auth::user()->id }}/profile-picture" method="post"
-                                enctype="multipart/form-data">
+                            <form action="/Readteracy/account/{{ Auth::user()->id }}/profile-picture" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="card-body text-center">
                                     @if (Auth::user()->image == null)
@@ -103,15 +102,12 @@
                                         alt="avatar" class="rounded-circle img-fluid" style="width: 150px; height: 150px" id="image_preview"> --}}
                                     @endif
                                     <div class="col mt-3">
-                                        <label for="image" class="btn btn-dark"><i class="fa-solid fa-upload"></i> Pilih
-                                            gambar</label>
+                                        <label for="image" class="btn btn-dark"><i class="fa-solid fa-upload"></i> Pilih gambar</label>
                                         <input type="file" name="image" class="form-control" id="image"
                                             style="display: none;">
                                         <button class="btn btn-primary mt-3" name="updatePic">Ubah Gambar</button>
                                         {{-- <a class="btn btn-danger mt-3" href="/Readteracy/account/{{ Auth::user()->id }}/delete/profile-picture">Hapus Foto Profile</a> --}}
                                         <hr>
-                                        {{-- <input type="file" class="form-control" name="image2" id="image2" style="display: none;">
-                                        <a href="javascript:void(0)" class="btn btn-dark btn-block" id="change_pic_btn">Ubah Gambar</a> --}}
                                     </div>
                                     <h5 class="my-3">{{ Auth::user()->name }}</h5>
                                     <p class="text-muted mb-1">
@@ -152,7 +148,6 @@
                                                 <input type="hidden" value="{{ $borrow->user_id }}" name="user_id">
                                                 <input type="hidden" value="{{ $borrow->book_id }}" name="book_id">
                                                 @if ($borrow->tipe === 'Fisik' && $borrow->status === 'dikembalikan')
-                                                    {{-- <p class="text-success mt-3 fw-bold fs-5">Sudah dikembalikan</p> --}}
                                                     <a href="/Readteracy/detail/buku/{{ $borrow->book_id }}" class="btn btn-primary btn-sm mt-3">Pinjam lagi</a>
                                                 @elseif ($borrow->tipe === 'Fisik')
                                                     <button class="btn btn-sm btn-dark mt-3" name="return_book">Return book</button>
@@ -236,24 +231,25 @@
                                     </div>
 
                                     <hr>
-                                    @if (Auth::user()->role === 2)
-                                        <a href="/Readteracy/data-peminjaman" class="btn btn-primary btn-lg mb-3">Data peminjaman buku</a>
-                                        <a href="/Readteracy/genre/genreList" class="btn btn-primary btn-lg mb-3">Tambah Genre</a>
-                                    @endif
                                     <div class="row">
-                                        <button type="submit" name="updateProfile" class="btn btn-dark">Update
-                                            Profile</button>
+                                        <button type="submit" name="updateProfile" class="btn btn-dark">Update Profile</button>
                                     </div>
                                 </div>
                             </form>
                         </div>
-                        @if (Auth::user()->role === 1)
+                        @if (Auth::user()->role === 1 || Auth::user()->role === 2)
                         <div class="row" data-aos="fade-up">
                             <div class="col-md-12">
                                 <div class="card mb-4 mb-md-0">
                                     <div class="card-body">
                                         <p class="mb-4"><span class="text-primary font-italic me-1">Readteracy</span> Info
                                         </p>
+                                        @if (Auth::user()->role === 2)
+                                            <a href="/Readteracy/data-peminjaman" class="btn btn-primary btn-lg mb-3 col-sm-5">Data peminjaman buku</a>
+                                            <a href="/Readteracy/genre/genreList" class="btn btn-primary btn-lg mb-3 col-sm-6">Tambah Genre</a>
+                                        @elseif (Auth::user()->role === 1)
+                                            <a href="/Readteracy/admin/all-users" class="btn btn-primary btn-lg mb-3 w-100">All User</a>
+                                        @endif
                                         <div class="row">
                                             <div class="col">
                                                 <div class="card mt-3 border shadow" style="width: 18rem;">
@@ -270,6 +266,7 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            @if (Auth::user()->role === 1)
                                             <div class="col">
                                                 <div class="card mt-3 border shadow" style="width: 18rem;">
                                                     <div class="row">
@@ -285,13 +282,14 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            @endif
                                             <div class="col">
-                                                <div class="card mt-3 border shadow justify-content-center" style="width: 15rem;">
+                                                <div class="card mt-3 border shadow justify-content-center" style="width: 18rem;">
                                                     <div class="row">
-                                                        <div class="col-md-3">
+                                                        <div class="col-md-4">
                                                             <i class="fa-solid fa-layer-group fa-4x mx-3 mt-3"></i>
                                                         </div>
-                                                        <div class="col-md-9">
+                                                        <div class="col-md-8">
                                                             <div class="card-body">
                                                                 <h5 class="card-title">Genre's</h5>
                                                                 <p class="card-text fw-bold">{{ $allGenres }}</p>
@@ -300,67 +298,38 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        @endif
-
-                        @if (Auth::user()->role === 1)
-                        <div class="row" data-aos="fade-up">
-                            <div class="col-md-12">
-                                <div class="card mb-4 mb-md-0">
-                                    <div class="card-body">
-                                        <p class="mb-4"><span class="text-primary font-italic me-1">Readteracy</span>
-                                            Info
-                                        </p>
-                                        <div class="row">
                                             <div class="col">
-                                                <div class="card mt-3 border shadow" style="width: 18rem;">
+                                                <div class="card mt-3 border shadow justify-content-center" style="width: 18rem;">
                                                     <div class="row">
                                                         <div class="col-md-4">
-                                                            <i class="fa-solid fa-book fa-4x mx-3 mt-3"></i>
-                                                        </div>
-                                                        <div class="col-md-8">
-                                                            <div class="card-body">
-                                                                <h5 class="card-title">Total books</h5>
-                                                                <p class="card-text fw-bold">{{ $allBooks }}</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="card mt-3 border shadow" style="width: 18rem;">
-                                                    <div class="row">
-                                                        <div class="col-md-4">
-                                                            <i class="fa-solid fa-users fa-4x mx-3 mt-3"></i>
-                                                        </div>
-                                                        <div class="col-md-8">
-                                                            <div class="card-body">
-                                                                <h5 class="card-title">Users</h5>
-                                                                <p class="card-text fw-bold">{{ $count_users }}</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="card mt-3 border shadow justify-content-center" style="width: 15rem;">
-                                                    <div class="row">
-                                                        <div class="col-md-3">
                                                             <i class="fa-solid fa-layer-group fa-4x mx-3 mt-3"></i>
                                                         </div>
-                                                        <div class="col-md-9">
+                                                        <div class="col-md-8">
                                                             <div class="card-body">
-                                                                <h5 class="card-title">Genre's</h5>
-                                                                <p class="card-text fw-bold">{{ $allGenres }}</p>
+                                                                <h5 class="card-title">Total borrowed</h5>
+                                                                <p class="card-text fw-bold">{{ $count_peminjaman }}</p>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
+                                            @if (Auth::user()->role === 2)
+                                            <div class="col">
+                                                <div class="card mt-3 border shadow justify-content-center" style="width: 18rem;">
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <i class="fa-solid fa-layer-group fa-4x mx-3 mt-3"></i>
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                            <div class="card-body">
+                                                                <h5 class="card-title">Total Return</h5>
+                                                                <p class="card-text fw-bold">{{ $count_pengembalian }}</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>

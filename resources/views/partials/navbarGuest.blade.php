@@ -4,10 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/img/favicon.png">
     <title>Readteracy - Sewa Buku</title>
+    <style>
+        /* inter-300 - latin */
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 300;
+            font-display: swap;
+            src: local(''),
+                url('/fonts/inter-v12-latin-300.woff2') format('woff2'),
+                url('/fonts/inter-v12-latin-300.woff') format('woff');
+        }
+
+        /* inter-400 - latin */
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: local(''),
+                url('/fonts/inter-v12-latin-regular.woff2') format('woff2'),
+                url('/fonts/inter-v12-latin-regular.woff') format('woff');
+        }
+
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 500;
+            font-display: swap;
+            src: local(''),
+                url('/fonts/inter-v12-latin-500.woff2') format('woff2'),
+                url('/fonts/inter-v12-latin-500.woff') format('woff');
+        }
+
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 700;
+            font-display: swap;
+            src: local(''),
+                url('/fonts/inter-v12-latin-700.woff2') format('woff2'),
+                url('/fonts/inter-v12-latin-700.woff') format('woff');
+        }
+    </style>
     <link rel="stylesheet" href="/css/navbar.css">
     <link rel="stylesheet" href="/css/dropdown.css">
     <link rel="stylesheet" href="/css/theme.min.css">
+    <link rel="stylesheet" href="/css/theme.css">
 </head>
 <body>
     <header>
@@ -36,7 +84,7 @@
                             @if (Request::url() !== url('/Readteracy/genre/genreList'))
                                 <div class="option">
                                     @foreach ( $genre as $items )
-                                        <div onclick="show('{{ $items->nama_genre }}')"><ion-icon name="book" class="text-white"></ion-icon> <a style="text-decoration: none;" class="text-white" href="/Readteracy/catalogue?genre={{ $items->slug }}">{{ $items->nama_genre }}</a></div>
+                                        <div onclick="show('{{ $items->nama_genre }}')"><ion-icon name="book"></ion-icon><a style="text-decoration: none;" class="text-white" href="/Readteracy/catalogue?genre={{ $items->slug }}">{{ $items->nama_genre }}</a></div>
                                     @endforeach
                                 </div>
                             @else
@@ -49,7 +97,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="system.html">
+                        <a class="nav-link" href="/Readteracy/about-us">
                             Tentang
                         </a>
                     </li>
@@ -96,17 +144,6 @@
     AOS.init({
         duration: 800,
     });
-</script>
-<script>
-    function show(items) {
-        document.querySelector('.textBox').value = items;
-        document.getElementById('value').style.color = 'white';
-    }
-
-    var dropdown = document.querySelector('.dropdown');
-    dropdown.onclick = function() {
-        dropdown.classList.toggle('active');
-    }
 </script>
 
 <script src="/js/navbar.js"></script>

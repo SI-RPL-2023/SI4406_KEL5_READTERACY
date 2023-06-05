@@ -5,11 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Readteracy - Sewa Buku</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/img/favicon.png">
+    <title>Readteracy - Sewa Buku</title>
+    <style>
+        /* inter-300 - latin */
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 300;
+            font-display: swap;
+            src: local(''),
+                url('/fonts/inter-v12-latin-300.woff2') format('woff2'),
+                /* Chrome 26+, Opera 23+, Firefox 39+ */
+                url('/fonts/inter-v12-latin-300.woff') format('woff');
+            /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        }
+
+        /* inter-400 - latin */
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: local(''),
+                url('/fonts/inter-v12-latin-regular.woff2') format('woff2'),
+                /* Chrome 26+, Opera 23+, Firefox 39+ */
+                url('/fonts/inter-v12-latin-regular.woff') format('woff');
+            /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        }
+
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 500;
+            font-display: swap;
+            src: local(''),
+                url('/fonts/inter-v12-latin-500.woff2') format('woff2'),
+                /* Chrome 26+, Opera 23+, Firefox 39+ */
+                url('/fonts/inter-v12-latin-500.woff') format('woff');
+            /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        }
+
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 700;
+            font-display: swap;
+            src: local(''),
+                url('/fonts/inter-v12-latin-700.woff2') format('woff2'),
+                /* Chrome 26+, Opera 23+, Firefox 39+ */
+                url('/fonts/inter-v12-latin-700.woff') format('woff');
+            /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        }
+    </style>
     <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/dropdown.css">
     <link rel="stylesheet" href="/css/theme.min.css">
     <link rel="stylesheet" href="/css/theme.css">
-    <link rel="stylesheet" href="/css/dropdown.css">
-
 </head>
 <body>
     <header>
@@ -29,12 +86,13 @@
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0 list-group list-group-horizontal">
                     <li class="nav-item">
                         <a class="nav-link" href="/Readteracy/catalogue">
-                            Catalogue
+                            Katalog
                         </a>
                     </li>
                     <li class="nav-item">
                         <div class="dropdown">
                             <input type="text" id="value" class="textBox" placeholder="Genre's" autocomplete="off">
+                            <input type="text" placeholder="Genre's">
                             @if (Request::url() !== url('/Readteracy/genre/genreList'))
                                 <div class="option">
                                     @foreach ( $genre as $items )
@@ -51,13 +109,14 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="system.html">
-                            About
+                        <a class="nav-link" href="/Readteracy/about-us">
+                            Tentang
                         </a>
                     </li>
                 </ul>
 
                 {{-- <img src="/img/guest.png" alt="" class="userPic" onclick="toggleMenu()"> --}}
+                @if (Auth::user())
                 <img class="userPic me-3" onclick="toggleMenu()" src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}&background=random&color=28a745" alt="">
                 <button class="btn btn-light" onclick="toggleMenu()">Menu</button>
                 <div class="sub-menu-wrap" id="subMenu">
@@ -72,14 +131,9 @@
                             <p>Ubah Password</p>
                             <span>></span>
                         </a>
-                        <a href="#" class="sub-menu-link">
+                        <a href="/Readteracy/history/borrowed" class="sub-menu-link">
                             <img src="/img/order.png">
                             <p>Riwayat</p>
-                            <span>></span>
-                        </a>
-                        <a href="/account/auth/logout" class="sub-menu-link">
-                            <img src="/img/logout.png">
-                            <p>Logout</p>
                             <span>></span>
                         </a>
                         <a href="/Readteracy/profile" class="sub-menu-link">
@@ -87,9 +141,14 @@
                             <p>Profile</p>
                             <span>></span>
                         </a>
-
+                        <a href="/account/auth/logout" class="sub-menu-link">
+                            <img src="/img/logout.png">
+                            <p>Logout</p>
+                            <span>></span>
+                        </a>
                     </div>
                 </div>
+                @endif
             </div>
         </nav>
     </header>
@@ -106,6 +165,12 @@
     });
 </script>
 <script>
+    let subMenu = document.getElementById("subMenu");
+
+    function toggleMenu() {
+        subMenu.classList.toggle("open-menu");
+    }
+
     function show(items) {
         document.querySelector('.textBox').value = items;
         document.getElementById('value').style.color = 'white';
@@ -115,8 +180,29 @@
     dropdown.onclick = function() {
         dropdown.classList.toggle('active');
     }
+
 </script>
-<script src="/js/navbar.js"></script>
+
+<script>
+    let scrollpos = window.scrollY
+    const header = document.querySelector(".navbar")
+    const header_height = header.offsetHeight
+
+    const add_class_on_scroll = () => header.classList.add("scrolled", "shadow-sm")
+    const remove_class_on_scroll = () => header.classList.remove("scrolled", "shadow-sm")
+
+    window.addEventListener('scroll', function() {
+        scrollpos = window.scrollY;
+
+        if (scrollpos >= header_height) {
+            add_class_on_scroll()
+        } else {
+            remove_class_on_scroll()
+        }
+
+        console.log(scrollpos)
+    })
+</script>
 </html>
 
 

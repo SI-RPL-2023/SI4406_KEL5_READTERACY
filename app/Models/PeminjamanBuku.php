@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class PeminjamanBuku extends Model
 {
@@ -11,17 +12,13 @@ class PeminjamanBuku extends Model
     protected $table = 'peminjaman_buku';
     protected $guarded = ["actual_return_date"];
 
-    // public function genreHistorical()
-    // {
-    //     return $this->belongsTo(genreHistorical::class);
-    // }
-    // public function genreEducation()
-    // {
-    //     return $this->belongsTo(genreEducation::class);
-    // }
+    public function genre(): BelongsToMany
+    {
+        return $this->belongsToMany(Genre::class, "book_genre", "book_id", "genre_id");
+    }
 
-    // public function borrower()
-    // {
-    //     return $this->belongsTo(User::class, 'borrower_id');
-    // }
+    public function book()
+    {
+        return $this->belongsTo(BooksCatalogue::class);
+    }
 }

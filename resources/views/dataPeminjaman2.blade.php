@@ -72,6 +72,7 @@
                                                         <option @if ( $borrowedBook->status === "sedang dipinjam") selected @endif value="sedang dipinjam">sedang dipinjam</option>
                                                         <option @if ( $borrowedBook->status === "dikembalikan") selected @endif value="dikembalikan">dikembalikan</option>
                                                     </select>
+
                                                     <button class="btn btn-lg btn-dark">Konfirmasi</button>
                                                 </div>
                                                 <div class="mt-3">

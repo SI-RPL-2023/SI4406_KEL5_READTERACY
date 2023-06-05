@@ -193,12 +193,12 @@
                                         d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
                                 </svg>
                             </p>
-                            <h3 class="border-top border-secondary pt-5 mt-5">Fungsi Web ini? (2)</h3>
-                            <p class="text-secondary">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-                                nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-                                voluptua.<br>
+                            <h3 class="border-top border-secondary pt-5 mt-5">Readteracy memberikan media pembelajaran yang efisien</h3>
+                            <p class="text-secondary"> Saat para pelajar cenderung mudah bosan dan susah mencari jawaban,
+                                maka buku elektornik ini bisa dimanfaatkan sebagai media pembelajaran yang efisien.
+                                Dengan buku jenis ini, para pelajar akan lebih tertarik untuk mempelajarinya.<br>
                                 <a href="#" class="link-fancy link-fancy-light me-2">Tell me more</a>
-                                <svg width="24" height="24"
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd"
                                         d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
@@ -211,46 +211,40 @@
 
             <div class="bg-black py-vh-3">
                 <div class="container bg-black px-vw-5 py-vh-3 rounded-5 shadow">
-
                     <div class="row gx-5">
                         <div class="col-12 col-md-6">
-
-                            <div class="card bg-transparent mb-5" data-aos="zoom-in-up">
-                                <div class="bg-dark shadow rounded-5 p-0">
-                                    <img src="/img/buku/" width="532" height="227" alt="..."
-                                        class="img-fluid rounded-5 no-bottom-radius" loading="lazy">
-                                    <div class="p-5">
-                                        <h2 class="fw-lighter">Ipsum dolor est</h2>
-                                        <p class="pb-4 text-secondary">Lorem ipsum dolor sit amet, consetetur sadipscing
-                                            elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-                                            erat.</p>
-                                        <a href="#" class="link-fancy link-fancy-light">Read more</a>
+                            @foreach ( $booksLeft as $book )
+                                <div class="card bg-transparent mb-5" data-aos="zoom-in-up">
+                                    <div class="bg-dark shadow rounded-5 p-0">
+                                        <img src="/img/buku/{{ $book->image }}" width="532" height="227" alt="..."
+                                            class="img-fluid rounded-5 no-bottom-radius" loading="lazy">
+                                        <div class="p-5">
+                                            <h2 class="fw-lighter">{{ $book->judul }}</h2>
+                                            <p class="pb-4 text-secondary">{{ substr($book->sinopsis, 0 , 150) }}....<a href="/Readteracy/detail/{{ $book->id }}" class="link-fancy link-fancy-light">baca kelanjutannya disini</a></p>
+                                            <a href="/Readteracy/detail/{{ $book->id }}" class="link-fancy link-fancy-light">Read more</a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-
+                            @endforeach
                         </div>
                         <div class="col-12 col-md-6">
                             <div class="p-5 pt-0 mt-5" data-aos="fade">
                                 <span class="h5 text-secondary fw-lighter">What we don´t know</span>
                                 <h2 class="display-4">There is a lot we don´t know. Here is a small sneak peek</h2>
                             </div>
-
+                            @foreach ( $booksRight as $book )
                                 <div class="card bg-transparent mb-5 mt-5" data-aos="zoom-in-up">
                                     <div class="bg-dark shadow rounded-5 p-0">
-                                        <img src="/img/buku/" width="582" height="390" alt="..."
+                                        <img src="/img/buku/{{ $book->image }}" width="582" height="390" alt="..."
                                             class="img-fluid rounded-5 no-bottom-radius" loading="lazy">
                                         <div class="p-5">
-                                            <h2 class="fw-lighter">Ipsum dolor est</h2>
-                                            <p class="pb-4 text-secondary">
-                                                Lorem ipsum dolor sit amet, consetetur sadipscing
-                                                elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-                                                erat.</p>
-                                            <a href="#" class="link-fancy link-fancy-light">Read more</a>
+                                            <h2 class="fw-lighter">{{ $book->judul }}</h2>
+                                            <p class="pb-4 text-secondary">{{ substr($book->sinopsis, 0 , 150) }}....</p>
+                                            <a href="/Readteracy/detail/{{ $book->id }}" class="link-fancy link-fancy-light">Read more</a>
                                         </div>
                                     </div>
                                 </div>
-
+                            @endforeach
                         </div>
                     </div>
 

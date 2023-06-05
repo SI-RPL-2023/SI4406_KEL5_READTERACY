@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Auth;
+use App\Models\BooksCatalogue;
 use App\Models\User;
 use App\Models\Genre;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use App\Models\BooksCatalogue;
 use App\Models\PeminjamanBuku;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
@@ -19,11 +19,6 @@ use Illuminate\Support\Facades\Auth as AuthLogin;
 
 class AuthController extends Controller
 {
-    public function login_page()
-    {
-        return view('auth.login');
-    }
-
     public function register_page()
     {
         return view('auth.register');
@@ -49,9 +44,14 @@ class AuthController extends Controller
             'password' => Hash::make($request->password),
             'remember_token' => Str::random(60)
         ]);
-        // dd($daftar);
         return redirect('/')->with('successRegist', 'Akunmu berhasil didaftarkan 😍');
     }
+
+    public function login_page()
+    {
+        return view('auth.login');
+    }
+
     public function login_store( Request $request )
     {
         if ( AuthLogin::attempt(['email' => $request->email, 'password' => $request->password]) ) {
@@ -67,15 +67,14 @@ class AuthController extends Controller
             }
 
         } else {
-            return redirect('/account/login-page')->withErrors('wrongAuth', 'Email dan Password tidak sesuai');
+            return redirect('/account/login-page')->with('wrongAuth', 'Email dan Password tidak sesuai');
         }
     }
 
-    // Logout nanti
     public function logout()
     {
         AuthLogin::logout();
-        return redirect('/');
+        return redirect('/')->with('logingOut', 'Terimakasih telah membaca, jangan bosan kemari lagi yah 😘');
     }
 
     public function profile_page()
@@ -88,7 +87,12 @@ class AuthController extends Controller
         $allBooks = BooksCatalogue::count();
         $allGenres = Genre::count();
         $count_users = Auth::count();
-        return view('auth.profile', compact(['peminjaman', 'count_users', 'genre', 'allGenres', 'allBooks']));
+        $count_peminjaman = PeminjamanBuku::count();
+        $count_pengembalian = PeminjamanBuku::where('status', '=', 'dikembalikan')->count();
+        return view('auth.profile', compact([
+            'peminjaman', 'count_users', 'genre',
+            'allGenres', 'allBooks', 'count_peminjaman', 'count_pengembalian'
+        ]));
     }
 
     public function update_profile( Request $request )
@@ -154,6 +158,7 @@ class AuthController extends Controller
 
         return redirect("/Readteracy/profile")->with('profileUpdate', 'Profile Kamu Sukses Di Update');
     }
+
 
     public function update_profilePic2(Request $request)
     {

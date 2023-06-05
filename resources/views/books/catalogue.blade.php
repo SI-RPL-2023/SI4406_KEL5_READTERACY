@@ -191,6 +191,7 @@
                                     <div class="col offset-sm-5" >
                                         <p class="text-center">{{ $books->links() }}</p>
                                     </div>
+                                <div class="cover bg" style="background-image: url(/img/buku/buku4.jpg)">
                                 </div>
                             </div>
                         </section>

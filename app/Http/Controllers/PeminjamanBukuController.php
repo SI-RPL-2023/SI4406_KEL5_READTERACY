@@ -15,11 +15,12 @@ use Illuminate\Support\Facades\Redirect;
 
 class PeminjamanBukuController extends Controller
 {
-    public function viewPage_pinjamBuku()
+    public function viewPage_historyPeminjaman()
     {
+        $genre = Genre::all();
         $user = auth()->user();
-        $peminjaman = PeminjamanBuku::with('genreHistorical')->where('user_id', $user->id)->latest()->get();
-        return view('library', compact(['peminjaman']));
+        $peminjaman = PeminjamanBuku::with('book')->where('user_id', $user->id)->latest()->get();
+        return view('history', compact(['peminjaman', 'genre']));
     }
 
     public function pinjam_buku_nonFisik( Request $request )
@@ -58,8 +59,8 @@ class PeminjamanBukuController extends Controller
 
     public function pinjam_buku_fisik( Request $request )
     {
-        $return_date = $request["return_date"] = Carbon::now()->addDay(3)->locale('id')->toDateString();
-        // $book = genreHistorical::findOrFail($request->book_id)->only('status');
+        $rent_date = Carbon::parse($request->rent_date);
+        $return_date = $request["return_date"] = $rent_date->addDay(3)->toDateString();
 
         try {
             $tipe = $request->input("tipe");
@@ -67,7 +68,7 @@ class PeminjamanBukuController extends Controller
             DB::beginTransaction();
             PeminjamanBuku::create($request->except('genre'));
             DB::commit();
-            return Redirect::back()->with('bukuFisik_terpinjam', 'Buku berhasil dipinjam');
+            return Redirect::back()->with('bukuFisik_terpinjam');
 
         } catch (\Throwable $throw) {
             DB::rollback();
@@ -96,8 +97,17 @@ class PeminjamanBukuController extends Controller
     {
         $genre = Genre::all();
         $borrowedBooks = PeminjamanBuku::latest()->get();
+        $notify = PeminjamanBuku::where('status', 'in stock')->first();
+        // apabila ingin mendapatkan data tetapi tidak
+        // bisa pakai get karna collection tidak ada pada instance bisa memakai first
         $siPeminjam = User::all();
-        return view('dataPeminjaman2', compact(['borrowedBooks', "siPeminjam", 'genre']));
+        $count_sedangDipinjam = PeminjamanBuku::where('status', 'sedang dipinjam')->count();
+        $count_dikembalikan = PeminjamanBuku::where('status', 'dikembalikan')->count();
+        $count_inStock = PeminjamanBuku::where('status', 'in stock')->count();
+        return view('dataPeminjaman2', compact([
+            'borrowedBooks', "siPeminjam", 'genre', 'notify',
+            'count_sedangDipinjam', 'count_dikembalikan', 'count_inStock'
+        ]));
     }
 
     public function ubah_status( Request $request, $id )
@@ -111,9 +121,4 @@ class PeminjamanBukuController extends Controller
 
         return redirect()->back();
     }
-    // $book = PeminjamanBuku::findOrFail($request->book_id);
-    // $book->status = "sedang dipinjam";
-    // $book = genreHistorical::findOrFail($request->book_id);
-    // $book->status = "sedang dipinjam";
-    // $book->save();
 }
